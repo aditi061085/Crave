@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Crave</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000;
+      --card: #0f0f0f;
+      --card2: #161616;
+      --border: #222;
+      --text: #fff;
+      --muted: #555;
+      --muted2: #888;
+      --accent: #fff;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* AUTH */
+    .auth-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 40px 28px 64px;
+    }
+    .auth-content { width: 100%; max-width: 400px; }
+    .auth-logo {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .auth-logo-icon {
+      width: 64px; height: 64px;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .auth-title {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: #fff;
+    }
+    .auth-sub {
+      color: var(--muted2);
+      font-size: 15px;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+    .btn-primary {
+      width: 100%;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      transition: opacity 0.15s;
+      font-family: inherit;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary:active { opacity: 0.7; }
+    .btn-secondary {
+      width: 100%;
+      background: transparent;
+      color: #fff;
+      border: 1px solid #222;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: border-color 0.15s;
+      font-family: inherit;
+    }
+    .btn-secondary:hover { border-color: #444; }
+    .google-icon {
+      width: 20px; height: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234285F4' d='M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z'/%3E%3Cpath fill='%2334A853' d='M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.32-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z'/%3E%3Cpath fill='%23FBBC05' d='M11.68 28.18A13.8 13.8 0 0 1 10.8 24c0-1.45.25-2.86.68-4.18v-5.7H4.34A23.93 23.93 0 0 0 0 24c0 3.87.93 7.54 2.56 10.79l7.12-5.52z'/%3E%3Cpath fill='%23EA4335' d='M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.34 5.7C13.42 14.62 18.27 10.75 24 10.75z'/%3E%3C/svg%3E") center/contain no-repeat;
+      flex-shrink: 0;
+    }
+    .auth-terms {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 24px;
+      line-height: 1.7;
+    }
+
+    /* APP */
+    .app-screen { min-height: 100vh; display: flex; flex-direction: column; max-width: 430px; margin: 0 auto; }
+    .app-header {
+      padding: 60px 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-logo { font-size: 24px; font-weight: 800; letter-spacing: -1px; color: #fff; }
+    .header-avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--muted2);
+      cursor: pointer;
+    }
+
+    /* Progress */
+    .progress-bar {
+      display: flex; gap: 4px;
+      padding: 0 24px 24px;
+    }
+    .progress-seg {
+      flex: 1; height: 2px;
+      background: #1a1a1a;
+      border-radius: 1px;
+      transition: background 0.4s;
+    }
+    .progress-seg.active { background: #fff; }
+    .progress-seg.done { background: #333; }
+
+    .app-body { flex: 1; padding: 0 24px 120px; }
+
+    .step-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+      line-height: 1.15;
+    }
+    .step-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; line-height: 1.6; }
+
+    /* Camera */
+    .camera-zone {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .camera-zone:hover { border-color: #333; }
+    .camera-zone img { width: 100%; height: 100%; object-fit: cover; }
+    .camera-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px;
+    }
+    .cam-icon-wrap {
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .cam-label { font-size: 14px; font-weight: 600; color: #fff; }
+    .cam-sub { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .cam-btns { display: flex; gap: 8px; margin-top: 12px; }
+    .cam-btn {
+      flex: 1; padding: 13px;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s;
+    }
+    .cam-btn:hover { border-color: #444; }
+    .cam-btn.cam-btn-white {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+    .cam-btn.cam-btn-white:hover { opacity: 0.9; }
+
+    /* Inputs */
+    .field-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 8px; display: block;
+    }
+    .field-group { margin-bottom: 24px; }
+    .text-input {
+      width: 100%;
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 16px;
+      color: #fff;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .text-input:focus { border-color: #444; }
+    .text-input::placeholder { color: #333; }
+
+    /* Hunger */
+    .hunger-big {
+      font-size: 64px; font-weight: 900;
+      letter-spacing: -4px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hunger-label-text { font-size: 16px; font-weight: 600; color: var(--muted2); margin-bottom: 20px; }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%; height: 2px;
+      background: #1e1e1e;
+      border-radius: 1px;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      border: none;
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.1);
+    }
+    .hunger-scale { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+
+    /* Budget chips */
+    .chip-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .chip {
+      padding: 10px 18px;
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 100px;
+      font-size: 14px; font-weight: 600;
+      color: var(--muted2);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .chip.active { background: #fff; color: #000; border-color: #fff; }
+    .chip:hover:not(.active) { border-color: #333; color: #fff; }
+    .custom-budget {
+      display: flex; align-items: center;
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 14px 16px; gap: 6px;
+    }
+    .custom-budget:focus-within { border-color: #444; }
+    .dollar { font-size: 18px; font-weight: 700; color: var(--muted); }
+    .custom-budget input {
+      background: transparent; border: none; outline: none;
+      font-size: 18px; font-weight: 700; color: #fff;
+      width: 100%; font-family: inherit;
+    }
+    .custom-budget input::placeholder { color: #222; }
+
+    /* Location cards */
+    .loc-card {
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .loc-card:hover { border-color: #333; }
+    .loc-card.selected { border-color: #fff; }
+    .loc-icon {
+      width: 40px; height: 40px;
+      background: #111; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .loc-info { flex: 1; }
+    .loc-name { font-size: 14px; font-weight: 700; }
+    .loc-addr { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .loc-dist { font-size: 12px; color: var(--muted2); margin-top: 1px; }
+    .loc-check {
+      width: 20px; height: 20px;
+      border-radius: 50%; border: 1px solid #333;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: transparent;
+      transition: all 0.2s; flex-shrink: 0;
+    }
+    .loc-card.selected .loc-check { background: #fff; border-color: #fff; color: #000; }
+
+    /* CTA */
+    .cta-wrap {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 16px 24px 40px;
+      background: linear-gradient(transparent, #000 40%);
+    }
+    .cta-inner { max-width: 382px; margin: 0 auto; }
+    .btn-cta {
+      width: 100%;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 14px;
+      padding: 17px;
+      font-size: 16px; font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-cta:hover { opacity: 0.88; }
+    .btn-cta:active { opacity: 0.7; }
+    .btn-cta:disabled { opacity: 0.25; cursor: not-allowed; }
+
+    /* Loading */
+    .loading-screen {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 24px; padding: 40px;
+      background: #000;
+    }
+    .loading-logo { font-size: 32px; font-weight: 800; letter-spacing: -1px; color: #fff; }
+    .loading-ring {
+      width: 44px; height: 44px;
+      border: 1.5px solid #1e1e1e;
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-msg { color: var(--muted2); font-size: 15px; text-align: center; line-height: 1.7; }
+    .loading-msg strong { color: #fff; font-weight: 700; }
+
+    /* Results */
+    .top-pick {
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .pick-eyebrow {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--muted); margin-bottom: 10px;
+    }
+    .pick-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+    .pick-desc { font-size: 14px; color: var(--muted2); line-height: 1.65; }
+    .pick-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+    .pick-tag {
+      padding: 5px 10px;
+      background: #161616;
+      border: 1px solid #222;
+      border-radius: 100px;
+      font-size: 12px; font-weight: 600; color: var(--muted2);
+    }
+
+    .section-head {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--muted); margin: 28px 0 14px;
+    }
+
+    .dish-card {
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 8px;
+      display: flex; gap: 14px;
+    }
+    .dish-emoji { font-size: 28px; line-height: 1; flex-shrink: 0; padding-top: 2px; }
+    .dish-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .dish-reason { font-size: 13px; color: var(--muted2); line-height: 1.5; }
+    .dish-pills { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .dpill {
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+      background: #141414; border: 1px solid #222; color: var(--muted2);
+    }
+
+    .place-card {
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      text-decoration: none;
+    }
+    .place-card:hover { border-color: #333; }
+    .place-icon {
+      width: 38px; height: 38px;
+      background: #111; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .place-name { font-size: 14px; font-weight: 700; color: #fff; }
+    .place-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .place-arrow { color: #333; font-size: 20px; margin-left: auto; }
+
+    .error-box {
+      background: #0f0a0a;
+      border: 1px solid #2a1a1a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: #cc4444;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed; top: 56px; left: 50%;
+      transform: translateX(-50%) translateY(-60px);
+      background: #1a1a1a; border: 1px solid #2a2a2a;
+      border-radius: 10px; padding: 10px 18px;
+      font-size: 13px; font-weight: 600; color: #fff;
+      z-index: 999;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    .fade-in { animation: fadeUp 0.35s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .hidden { display: none !important; }
+
+    /* Divider */
+    .divider { height: 1px; background: #111; margin: 8px 0 20px; }
+  </style>
+</head>
+<body>
+
+<!-- AUTH -->
+<div id="authScreen" class="auth-screen">
+  <div class="auth-content fade-in">
+    <div class="auth-logo">
+      <div class="auth-logo-icon">
+        <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+          <path d="M22 5C16.5 5 12 8.8 12 13.5c0 2.2.8 4.2 2.2 5.8C13 20.8 12 22.6 12 24.5V38a1 1 0 001 1h18a1 1 0 001-1V24.5c0-1.9-1-3.7-2.2-5.2C31.2 17.7 32 15.7 32 13.5 32 8.8 27.5 5 22 5z" fill="white"/>
+          <rect x="12" y="34" width="20" height="3" rx="1.5" fill="white"/>
+        </svg>
+      </div>
+      <div class="auth-title">Crave</div>
+      <div class="auth-sub">Snap a menu. Tell us what you want.<br>We find exactly what to order.</div>
+    </div>
+    <button class="btn-primary" onclick="signIn()">
+      <span class="google-icon"></span>
+      Continue with Google
+    </button>
+    <button class="btn-secondary" onclick="signIn()">Continue with Email</button>
+    <div class="auth-terms">By continuing you agree to our Terms of Service<br>and Privacy Policy</div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div id="loadingScreen" class="loading-screen hidden">
+  <div class="loading-logo">Crave</div>
+  <div class="loading-ring"></div>
+  <div class="loading-msg" id="loadingMsg"><strong>Analyzing your menu...</strong><br>Finding the perfect match</div>
+</div>
+
+<!-- APP -->
+<div id="appScreen" class="app-screen hidden">
+  <div class="app-header">
+    <div class="header-left">
+      <svg width="22" height="22" viewBox="0 0 44 44" fill="none">
+        <path d="M22 5C16.5 5 12 8.8 12 13.5c0 2.2.8 4.2 2.2 5.8C13 20.8 12 22.6 12 24.5V38a1 1 0 001 1h18a1 1 0 001-1V24.5c0-1.9-1-3.7-2.2-5.2C31.2 17.7 32 15.7 32 13.5 32 8.8 27.5 5 22 5z" fill="white"/>
+        <rect x="12" y="34" width="20" height="3" rx="1.5" fill="white"/>
+      </svg>
+      <div class="header-logo">Crave</div>
+    </div>
+    <div class="header-avatar" id="avatarEl">?</div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-seg active" id="seg1"></div>
+    <div class="progress-seg" id="seg2"></div>
+    <div class="progress-seg" id="seg3"></div>
+    <div class="progress-seg" id="seg4"></div>
+  </div>
+
+  <div class="app-body">
+
+    <!-- STEP 1 -->
+    <div id="step1" class="fade-in">
+      <div class="step-label">Step 1 of 4</div>
+      <div class="step-title">Snap the menu</div>
+      <div class="step-sub">Take a photo of the menu in front of you</div>
+      <div class="camera-zone" id="cameraZone">
+        <div class="camera-overlay" id="cameraOverlay">
+          <div class="cam-icon-wrap">📷</div>
+          <div class="cam-label">Tap to take a photo</div>
+          <div class="cam-sub">or upload from gallery</div>
+        </div>
+      </div>
+      <div class="cam-btns">
+        <button class="cam-btn cam-btn-white" onclick="triggerCamera()">📷 Camera</button>
+        <button class="cam-btn" onclick="triggerUpload()">🖼 Gallery</button>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleImage(event)" />
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" class="fade-in hidden">
+      <div class="step-label">Step 2 of 4</div>
+      <div class="step-title">What are you feeling?</div>
+      <div class="step-sub">Tell us your craving and hunger level</div>
+      <div class="field-group">
+        <label class="field-label">I am craving</label>
+        <input type="text" class="text-input" id="cravingInput" placeholder="e.g. something spicy, pasta, a big burger..." />
+      </div>
+      <div class="field-group">
+        <label class="field-label">Hunger level</label>
+        <div class="hunger-big" id="hungerNum">5</div>
+        <div class="hunger-label-text" id="hungerLabelText">Moderately hungry</div>
+        <input type="range" min="1" max="10" value="5" id="hungerSlider" oninput="updateHunger(this.value)" />
+        <div class="hunger-scale"><span>Not hungry</span><span>Starving</span></div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" class="fade-in hidden">
+      <div class="step-label">Step 3 of 4</div>
+      <div class="step-title">Location and budget</div>
+      <div class="step-sub">We will find real places near you</div>
+      <div class="field-group">
+        <label class="field-label">Nearby restaurants</label>
+        <div id="nearbyList">
+          <div class="loc-card selected" id="loc-current">
+            <div class="loc-icon">📋</div>
+            <div class="loc-info">
+              <div class="loc-name">This menu</div>
+              <div class="loc-addr">The restaurant you are in now</div>
+              <div class="loc-dist">Here now</div>
+            </div>
+            <div class="loc-check">✓</div>
+          </div>
+          <div id="nearbyLoading" style="color:#555;font-size:13px;padding:12px 0;">Finding places near you...</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Budget</label>
+        <div class="chip-row" id="budgetChips">
+          <button class="chip" onclick="setBudget(10,this)">Under $10</button>
+          <button class="chip active" onclick="setBudget(20,this)">Under $20</button>
+          <button class="chip" onclick="setBudget(35,this)">Under $35</button>
+          <button class="chip" onclick="setBudget(50,this)">Under $50</button>
+        </div>
+        <div class="custom-budget">
+          <span class="dollar">$</span>
+          <input type="number" id="budgetInput" placeholder="Custom" value="20" min="1" />
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div id="step4" class="fade-in hidden">
+      <div class="step-label">Your order</div>
+      <div class="step-title">Perfect match</div>
+      <div class="step-sub">Based on your menu, craving, and hunger</div>
+      <div id="errorBox" class="error-box hidden"></div>
+      <div id="results"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-wrap hidden" id="ctaWrap">
+  <div class="cta-inner">
+    <button class="btn-cta" id="ctaBtn" onclick="nextStep()">
+      <span id="ctaText">Continue</span>
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var step = 1;
+var hasImage = false;
+var imageBase64 = "";
+var hunger = 5;
+var budget = 20;
+var userLat = null;
+var userLng = null;
+
+var hungerLabels = {
+  1:"Not hungry at all", 2:"Barely hungry", 3:"A little peckish",
+  4:"Getting hungry", 5:"Moderately hungry", 6:"Pretty hungry",
+  7:"Very hungry", 8:"Starving", 9:"Absolutely starving", 10:"FAMISHED"
+};
+
+function signIn() {
+  showLoading("Signing in...", "Getting things ready for you");
+  setTimeout(function() {
+    hideLoading();
+    document.getElementById("authScreen").classList.add("hidden");
+    document.getElementById("appScreen").classList.remove("hidden");
+    document.getElementById("ctaWrap").classList.remove("hidden");
+    updateCTA();
+    getLocation();
+  }, 1200);
+}
+
+function getLocation() {
+  if (!navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(function(pos) {
+    userLat = pos.coords.latitude;
+    userLng = pos.coords.longitude;
+    loadNearbyPlaces();
+  }, function() {
+    document.getElementById("nearbyLoading").textContent = "Enable location to see nearby places";
+  });
+}
+
+function loadNearbyPlaces() {
+  if (!userLat || !userLng) return;
+  fetch("/api/places?lat=" + userLat + "&lng=" + userLng)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var list = document.getElementById("nearbyList");
+      var loader = document.getElementById("nearbyLoading");
+      if (loader) loader.remove();
+      if (!data.places || data.places.length === 0) return;
+      data.places.forEach(function(p, i) {
+        var card = document.createElement("div");
+        card.className = "loc-card";
+        card.id = "loc-" + i;
+        card.setAttribute("onclick", "toggleLoc(this)");
+        card.innerHTML =
+          "<div class=\"loc-icon\">" + (p.emoji || "🍴") + "</div>" +
+          "<div class=\"loc-info\">" +
+            "<div class=\"loc-name\">" + p.name + "</div>" +
+            "<div class=\"loc-addr\">" + p.address + "</div>" +
+            "<div class=\"loc-dist\">" + p.distance + "</div>" +
+          "</div>" +
+          "<div class=\"loc-check\">✓</div>";
+        list.appendChild(card);
+      });
+    })
+    .catch(function() {
+      var loader = document.getElementById("nearbyLoading");
+      if (loader) loader.textContent = "Could not load nearby places";
+    });
+}
+
+function toggleLoc(el) {
+  el.classList.toggle("selected");
+}
+
+function triggerCamera() {
+  var inp = document.getElementById("fileInput");
+  inp.setAttribute("capture", "environment");
+  inp.click();
+}
+
+function triggerUpload() {
+  var inp = document.getElementById("fileInput");
+  inp.removeAttribute("capture");
+  inp.click();
+}
+
+function handleImage(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    var b64 = ev.target.result;
+    imageBase64 = b64;
+    var zone = document.getElementById("cameraZone");
+    zone.innerHTML = "<img src=\"" + b64 + "\" alt=\"Menu\" /><div class=\"camera-overlay\"><div class=\"cam-icon-wrap\">✅</div><div class=\"cam-label\">Menu captured</div><div class=\"cam-sub\">Tap to retake</div></div>";
+    zone.onclick = triggerCamera;
+    hasImage = true;
+    updateCTA();
+    showToast("Menu photo saved");
+  };
+  reader.readAsDataURL(file);
+}
+
+function updateHunger(v) {
+  hunger = parseInt(v);
+  document.getElementById("hungerNum").textContent = v;
+  document.getElementById("hungerLabelText").textContent = hungerLabels[hunger];
+}
+
+function setBudget(amount, el) {
+  budget = amount;
+  document.getElementById("budgetInput").value = amount;
+  var chips = document.querySelectorAll(".chip");
+  for (var i = 0; i < chips.length; i++) chips[i].classList.remove("active");
+  el.classList.add("active");
+}
+
+function updateCTA() {
+  var text = document.getElementById("ctaText");
+  var btn = document.getElementById("ctaBtn");
+  btn.disabled = false;
+  if (step === 1) text.textContent = hasImage ? "Looks good, continue" : "Skip — no photo";
+  else if (step === 2) text.textContent = "Next";
+  else if (step === 3) text.textContent = "Find my perfect order";
+  else document.getElementById("ctaWrap").classList.add("hidden");
+}
+
+function nextStep() {
+  if (step === 1) { goTo(2); }
+  else if (step === 2) {
+    var c = document.getElementById("cravingInput").value.trim();
+    if (!c) { showToast("Tell us what you are craving first"); return; }
+    goTo(3);
+  }
+  else if (step === 3) { analyze(); }
+}
+
+function goTo(n) {
+  document.getElementById("step" + step).classList.add("hidden");
+  step = n;
+  document.getElementById("step" + step).classList.remove("hidden");
+  for (var i = 1; i <= 4; i++) {
+    var seg = document.getElementById("seg" + i);
+    if (!seg) continue;
+    seg.className = "progress-seg";
+    if (i < n) seg.classList.add("done");
+    if (i === n) seg.classList.add("active");
+  }
+  updateCTA();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function getSelectedPlaces() {
+  var cards = document.querySelectorAll(".loc-card.selected");
+  var names = [];
+  cards.forEach(function(c) {
+    var n = c.querySelector(".loc-name");
+    if (n) names.push(n.textContent);
+  });
+  return names;
+}
+
+function analyze() {
+  var craving = document.getElementById("cravingInput").value.trim();
+  var places = getSelectedPlaces();
+  var budgetVal = parseInt(document.getElementById("budgetInput").value) || budget;
+
+  showLoading("Reading your menu...", "Figuring out the perfect dish for you");
+
+  var body = {
+    craving: craving,
+    hunger: hunger,
+    budget: budgetVal,
+    places: places,
+    lat: userLat,
+    lng: userLng
+  };
+
+  if (imageBase64) {
+    body.image = imageBase64.split(",")[1];
+  }
+
+  fetch("/api/recommend", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    hideLoading();
+    goTo(4);
+    renderResults(data);
+  })
+  .catch(function(err) {
+    hideLoading();
+    goTo(4);
+    document.getElementById("errorBox").classList.remove("hidden");
+    document.getElementById("errorBox").textContent = "Something went wrong connecting to the AI. Check your API keys in Vercel.";
+  });
+}
+
+function renderResults(data) {
+  var el = document.getElementById("results");
+  el.innerHTML = "";
+
+  if (data.error) {
+    document.getElementById("errorBox").classList.remove("hidden");
+    document.getElementById("errorBox").textContent = data.error;
+    return;
+  }
+
+  // Top pick
+  if (data.top) {
+    var t = data.top;
+    var div = document.createElement("div");
+    div.className = "top-pick fade-in";
+    var tagsHtml = (t.tags || []).map(function(tag) {
+      return "<span class=\"pick-tag\">" + tag + "</span>";
+    }).join("");
+    div.innerHTML =
+      "<div class=\"pick-eyebrow\">Top pick</div>" +
+      "<div class=\"pick-title\">" + t.name + "</div>" +
+      "<div class=\"pick-desc\">" + t.reason + "</div>" +
+      "<div class=\"pick-tags\">" + tagsHtml + "</div>";
+    el.appendChild(div);
+  }
+
+  // More options
+  if (data.others && data.others.length > 0) {
+    var sh = document.createElement("div");
+    sh.className = "section-head";
+    sh.textContent = "Also worth ordering";
+    el.appendChild(sh);
+    data.others.forEach(function(d) {
+      var dc = document.createElement("div");
+      dc.className = "dish-card fade-in";
+      dc.innerHTML =
+        "<div class=\"dish-emoji\">" + (d.emoji || "🍽") + "</div>" +
+        "<div>" +
+          "<div class=\"dish-name\">" + d.name + "</div>" +
+          "<div class=\"dish-reason\">" + d.reason + "</div>" +
+          "<div class=\"dish-pills\">" +
+            "<span class=\"dpill\">" + d.price + "</span>" +
+            "<span class=\"dpill\">" + d.match + " match</span>" +
+          "</div>" +
+        "</div>";
+      el.appendChild(dc);
+    });
+  }
+
+  // Nearby places
+  if (data.nearbyPlaces && data.nearbyPlaces.length > 0) {
+    var nh = document.createElement("div");
+    nh.className = "section-head";
+    nh.textContent = "Nearby spots";
+    el.appendChild(nh);
+    data.nearbyPlaces.forEach(function(p) {
+      var a = document.createElement("a");
+      a.className = "place-card fade-in";
+      a.href = p.mapsUrl || "#";
+      a.target = "_blank";
+      a.innerHTML =
+        "<div class=\"place-icon\">" + (p.emoji || "📍") + "</div>" +
+        "<div>" +
+          "<div class=\"place-name\">" + p.name + "</div>" +
+          "<div class=\"place-meta\">" + p.meta + "</div>" +
+        "</div>" +
+        "<div class=\"place-arrow\">›</div>";
+      el.appendChild(a);
+    });
+  }
+}
+
+function showLoading(title, sub) {
+  document.getElementById("loadingMsg").innerHTML = "<strong>" + title + "</strong><br>" + sub;
+  document.getElementById("loadingScreen").classList.remove("hidden");
+  document.getElementById("appScreen").classList.add("hidden");
+  document.getElementById("ctaWrap").classList.add("hidden");
+}
+function hideLoading() {
+  document.getElementById("loadingScreen").classList.add("hidden");
+  document.getElementById("appScreen").classList.remove("hidden");
+  document.getElementById("ctaWrap").classList.remove("hidden");
+}
+function showToast(msg) {
+  var t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(function() { t.classList.remove("show"); }, 2600);
+}
+</script>
+</body>
+</html>s
