@@ -5,22 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Crave</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJTGKF1L3W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-KJTGKF1L3W');
-</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-KJTGKF1L3W");
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #000;
-      --card: #0f0f0f;
-      --card2: #161616;
-      --border: #222;
-      --text: #fff;
-      --muted: #555;
-      --muted2: #888;
+      --bg: #000; --card: #0f0f0f; --card2: #161616;
+      --border: #222; --text: #fff; --muted: #555; --muted2: #888;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
@@ -28,7 +23,7 @@
       min-height: 100vh; overflow-x: hidden;
     }
 
-    /* ── AUTH ── */
+    /* AUTH */
     .auth-screen {
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: flex-end;
@@ -85,7 +80,7 @@
     .auth-terms { text-align: center; color: var(--muted); font-size: 12px; margin-top: 20px; line-height: 1.7; }
     .auth-terms a { color: #666; text-decoration: underline; cursor: pointer; }
 
-    /* ── APP ── */
+    /* APP */
     .app-screen { min-height: 100vh; display: flex; flex-direction: column; max-width: 430px; margin: 0 auto; }
     .app-header { padding: 60px 24px 16px; display: flex; align-items: center; justify-content: space-between; }
     .header-left { display: flex; align-items: center; gap: 10px; }
@@ -95,11 +90,10 @@
       background: #1a1a1a; border: 1px solid #333;
       display: flex; align-items: center; justify-content: center;
       font-size: 13px; font-weight: 700; color: var(--muted2);
-      cursor: pointer; overflow: hidden; position: relative;
+      cursor: pointer; overflow: hidden;
     }
     .header-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
-    /* Avatar dropdown */
     .avatar-dropdown {
       position: fixed; top: 108px; right: 24px;
       background: #111; border: 1px solid #222; border-radius: 14px;
@@ -107,10 +101,7 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.6);
     }
     .avatar-dropdown-name { padding: 10px 14px; font-size: 13px; font-weight: 700; color: var(--muted2); border-bottom: 1px solid #1a1a1a; margin-bottom: 4px; }
-    .avatar-dropdown-item {
-      padding: 11px 14px; font-size: 14px; font-weight: 600;
-      color: #fff; cursor: pointer; border-radius: 8px; transition: background 0.15s;
-    }
+    .avatar-dropdown-item { padding: 11px 14px; font-size: 14px; font-weight: 600; color: #fff; cursor: pointer; border-radius: 8px; transition: background 0.15s; }
     .avatar-dropdown-item:hover { background: #1a1a1a; }
     .avatar-dropdown-item.danger { color: #cc4444; }
 
@@ -123,6 +114,36 @@
     .step-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .step-title { font-size: 28px; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; line-height: 1.15; }
     .step-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; line-height: 1.6; }
+
+    /* Back button */
+    .back-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: none; border: none; color: var(--muted2);
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      font-family: inherit; padding: 0; margin-bottom: 20px;
+      transition: color 0.15s;
+    }
+    .back-btn:hover { color: #fff; }
+
+    /* Home screen */
+    .home-greeting { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .home-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; }
+    .home-card {
+      background: #0a0a0a; border: 1px solid #1e1e1e;
+      border-radius: 18px; padding: 20px;
+      margin-bottom: 12px; cursor: pointer;
+      transition: border-color 0.2s;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .home-card:hover { border-color: #333; }
+    .home-card-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: #111; display: flex; align-items: center;
+      justify-content: center; font-size: 22px; flex-shrink: 0;
+    }
+    .home-card-title { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
+    .home-card-sub { font-size: 13px; color: var(--muted2); }
+    .home-card-arrow { color: var(--muted); font-size: 20px; margin-left: auto; }
 
     /* Camera */
     .camera-zone {
@@ -177,12 +198,52 @@
     .loc-check { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 11px; color: transparent; transition: all 0.2s; flex-shrink: 0; }
     .loc-card.selected .loc-check { background: #fff; border-color: #fff; color: #000; }
 
+    /* Group order */
+    .group-status {
+      background: #0a0a0a; border: 1px solid #1e1e1e;
+      border-radius: 16px; padding: 16px; margin-bottom: 12px;
+    }
+    .group-status-title { font-size: 13px; font-weight: 700; color: var(--muted2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+    .group-person {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid #111;
+    }
+    .group-person:last-child { border-bottom: none; }
+    .group-person-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #1a1a1a; border: 1px solid #222;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--muted2); flex-shrink: 0;
+    }
+    .group-person-name { font-size: 14px; font-weight: 600; flex: 1; }
+    .group-person-status { font-size: 12px; font-weight: 600; }
+    .status-waiting { color: var(--muted); }
+    .status-ready { color: #22c55e; }
+
+    .share-box {
+      background: #0a0a0a; border: 1px solid #1e1e1e;
+      border-radius: 14px; padding: 14px 16px;
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .share-url { font-size: 13px; color: var(--muted2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .share-copy-btn {
+      background: #fff; color: #000; border: none;
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+      flex-shrink: 0; transition: opacity 0.15s;
+    }
+    .share-copy-btn:hover { opacity: 0.85; }
+
+    /* CTA */
     .cta-wrap { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 24px 40px; background: linear-gradient(transparent, #000 40%); }
-    .cta-inner { max-width: 382px; margin: 0 auto; }
+    .cta-inner { max-width: 382px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
     .btn-cta { width: 100%; background: #fff; color: #000; border: none; border-radius: 14px; padding: 17px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .btn-cta:hover { opacity: 0.88; }
     .btn-cta:disabled { opacity: 0.25; cursor: not-allowed; }
+    .btn-cta-outline { width: 100%; background: transparent; color: #fff; border: 1px solid #222; border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: border-color 0.15s; }
+    .btn-cta-outline:hover { border-color: #444; }
 
+    /* Loading */
     .loading-screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 40px; background: #000; }
     .loading-logo { font-size: 32px; font-weight: 800; letter-spacing: -1px; color: #fff; }
     .loading-ring { width: 44px; height: 44px; border: 1.5px solid #1e1e1e; border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
@@ -212,7 +273,7 @@
     .place-arrow { color: #333; font-size: 20px; margin-left: auto; }
     .error-box { background: #0f0a0a; border: 1px solid #2a1a1a; border-radius: 12px; padding: 14px 16px; font-size: 13px; color: #cc4444; line-height: 1.6; margin-bottom: 16px; }
 
-    /* Legal pages */
+    /* Legal */
     .legal-screen { min-height: 100vh; background: #000; padding: 60px 24px 80px; max-width: 430px; margin: 0 auto; }
     .legal-back { display: flex; align-items: center; gap: 8px; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: 32px; background: none; border: none; font-family: inherit; }
     .legal-back:hover { color: #fff; }
@@ -294,7 +355,7 @@
     <div class="avatar-dropdown-item danger" onclick="signOutUser()">Sign out</div>
   </div>
 
-  <div class="progress-bar">
+  <div class="progress-bar" id="progressBar">
     <div class="progress-seg active" id="seg1"></div>
     <div class="progress-seg" id="seg2"></div>
     <div class="progress-seg" id="seg3"></div>
@@ -302,8 +363,32 @@
   </div>
 
   <div class="app-body">
+
+    <!-- HOME -->
+    <div id="stepHome" class="fade-in">
+      <div class="home-greeting" id="homeGreeting">What are you eating?</div>
+      <div class="home-sub">Choose how you want to order</div>
+      <div class="home-card" onclick="startSolo()">
+        <div class="home-card-icon">🍽</div>
+        <div>
+          <div class="home-card-title">Order for Myself</div>
+          <div class="home-card-sub">Snap a menu and get your perfect dish</div>
+        </div>
+        <div class="home-card-arrow">›</div>
+      </div>
+      <div class="home-card" onclick="startGroup()">
+        <div class="home-card-icon">👥</div>
+        <div>
+          <div class="home-card-title">Group Order</div>
+          <div class="home-card-sub">Find the best pick for everyone</div>
+        </div>
+        <div class="home-card-arrow">›</div>
+      </div>
+    </div>
+
     <!-- STEP 1 -->
-    <div id="step1" class="fade-in">
+    <div id="step1" class="fade-in hidden">
+      <button class="back-btn" onclick="goBack()">← Back</button>
       <div class="step-label">Step 1 of 4</div>
       <div class="step-title">Snap the menu</div>
       <div class="step-sub">Take a photo of the menu in front of you</div>
@@ -323,6 +408,7 @@
 
     <!-- STEP 2 -->
     <div id="step2" class="fade-in hidden">
+      <button class="back-btn" onclick="goBack()">← Back</button>
       <div class="step-label">Step 2 of 4</div>
       <div class="step-title">What are you feeling?</div>
       <div class="step-sub">Tell us your craving and hunger level</div>
@@ -341,6 +427,7 @@
 
     <!-- STEP 3 -->
     <div id="step3" class="fade-in hidden">
+      <button class="back-btn" onclick="goBack()">← Back</button>
       <div class="step-label">Step 3 of 4</div>
       <div class="step-title">Location and budget</div>
       <div class="step-sub">We will find real places near you</div>
@@ -374,14 +461,67 @@
       </div>
     </div>
 
-    <!-- STEP 4 -->
+    <!-- STEP 4 — RESULTS -->
     <div id="step4" class="fade-in hidden">
+      <button class="back-btn" onclick="goBack()">← Back</button>
       <div class="step-label">Your order</div>
       <div class="step-title">Perfect match</div>
       <div class="step-sub">Based on your menu, craving, and hunger</div>
       <div id="errorBox" class="error-box hidden"></div>
       <div id="results"></div>
     </div>
+
+    <!-- GROUP SETUP -->
+    <div id="stepGroup" class="fade-in hidden">
+      <button class="back-btn" onclick="goHome()">← Back</button>
+      <div class="step-label">Group Order</div>
+      <div class="step-title">Invite your group</div>
+      <div class="step-sub">Share this link so everyone can add their cravings</div>
+      <div class="share-box" id="shareBox">
+        <div class="share-url" id="shareUrl">Generating link...</div>
+        <button class="share-copy-btn" onclick="copyShareLink()">Copy</button>
+      </div>
+      <div class="group-status" id="groupStatus">
+        <div class="group-status-title">Waiting for everyone</div>
+        <div id="groupMembers"></div>
+      </div>
+    </div>
+
+    <!-- GROUP INPUT -->
+    <div id="stepGroupInput" class="fade-in hidden">
+      <div class="step-label">Group Order — Your Input</div>
+      <div class="step-title">What are you craving?</div>
+      <div class="step-sub">Once everyone submits, Crave finds the best match for the group</div>
+      <div class="field-group">
+        <label class="field-label">I am craving</label>
+        <input type="text" class="text-input" id="groupCravingInput" placeholder="e.g. something spicy, pasta, sushi..." />
+      </div>
+      <div class="field-group">
+        <label class="field-label">Hunger level</label>
+        <div class="hunger-big" id="groupHungerNum">5</div>
+        <div class="hunger-label-text" id="groupHungerLabelText">Moderately hungry</div>
+        <input type="range" min="1" max="10" value="5" oninput="updateGroupHunger(this.value)" />
+        <div class="hunger-scale"><span>Not hungry</span><span>Starving</span></div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">My budget</label>
+        <div class="chip-row">
+          <button class="chip" onclick="setGroupBudget(10,this)">Under $10</button>
+          <button class="chip active" onclick="setGroupBudget(20,this)">Under $20</button>
+          <button class="chip" onclick="setGroupBudget(35,this)">Under $35</button>
+          <button class="chip" onclick="setGroupBudget(50,this)">Under $50</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP RESULTS -->
+    <div id="stepGroupResults" class="fade-in hidden">
+      <div class="step-label">Group Result</div>
+      <div class="step-title">Best match for everyone</div>
+      <div class="step-sub">Based on all your cravings combined</div>
+      <div id="groupResults"></div>
+    </div>
+
   </div>
 </div>
 
@@ -391,69 +531,34 @@
     <button class="btn-cta" id="ctaBtn" onclick="nextStep()">
       <span id="ctaText">Continue</span>
     </button>
+    <button class="btn-cta-outline hidden" id="startOverBtn" onclick="goHome()">Start Over</button>
   </div>
 </div>
 
-<!-- TERMS OF SERVICE -->
+<!-- TERMS -->
 <div id="tosScreen" class="legal-screen hidden">
   <button class="legal-back" onclick="hideLegal()">← Back</button>
   <div class="legal-title">Terms of Service</div>
   <div class="legal-date">Last updated March 2026</div>
-  <div class="legal-section">
-    <h3>1. Acceptance of Terms</h3>
-    <p>By using Crave you agree to these terms. If you do not agree, please do not use the app.</p>
-  </div>
-  <div class="legal-section">
-    <h3>2. What Crave Does</h3>
-    <p>Crave uses AI to analyze menu photos and provide personalized food recommendations based on your stated preferences, hunger level, and budget. Recommendations are suggestions only and not guarantees of availability or accuracy.</p>
-  </div>
-  <div class="legal-section">
-    <h3>3. Your Account</h3>
-    <p>You are responsible for keeping your login credentials secure. You must be 13 or older to use Crave.</p>
-  </div>
-  <div class="legal-section">
-    <h3>4. Your Content</h3>
-    <p>Photos you upload are used only to generate your recommendation and are not stored or shared with third parties.</p>
-  </div>
-  <div class="legal-section">
-    <h3>5. Limitations</h3>
-    <p>Crave is provided as-is. We are not liable for any decisions made based on recommendations provided by the app.</p>
-  </div>
-  <div class="legal-section">
-    <h3>6. Changes</h3>
-    <p>We may update these terms at any time. Continued use of the app means you accept any updated terms.</p>
-  </div>
+  <div class="legal-section"><h3>1. Acceptance of Terms</h3><p>By using Crave you agree to these terms. If you do not agree, please do not use the app.</p></div>
+  <div class="legal-section"><h3>2. What Crave Does</h3><p>Crave uses AI to analyze menu photos and provide personalized food recommendations based on your stated preferences, hunger level, and budget. Recommendations are suggestions only.</p></div>
+  <div class="legal-section"><h3>3. Your Account</h3><p>You are responsible for keeping your login credentials secure. You must be 13 or older to use Crave.</p></div>
+  <div class="legal-section"><h3>4. Your Content</h3><p>Photos you upload are used only to generate your recommendation and are not stored or shared with third parties.</p></div>
+  <div class="legal-section"><h3>5. Limitations</h3><p>Crave is provided as-is. We are not liable for any decisions made based on recommendations provided by the app.</p></div>
+  <div class="legal-section"><h3>6. Changes</h3><p>We may update these terms at any time. Continued use of the app means you accept any updated terms.</p></div>
 </div>
 
-<!-- PRIVACY POLICY -->
+<!-- PRIVACY -->
 <div id="privacyScreen" class="legal-screen hidden">
   <button class="legal-back" onclick="hideLegal()">← Back</button>
   <div class="legal-title">Privacy Policy</div>
   <div class="legal-date">Last updated March 2026</div>
-  <div class="legal-section">
-    <h3>1. What We Collect</h3>
-    <p>We collect your email address or Google account info when you sign in. We also temporarily process menu photos you upload to generate recommendations.</p>
-  </div>
-  <div class="legal-section">
-    <h3>2. How We Use It</h3>
-    <p>Your information is used only to provide the Crave service. We do not sell your data or share it with advertisers.</p>
-  </div>
-  <div class="legal-section">
-    <h3>3. Location</h3>
-    <p>We request your location only to find nearby restaurants. Location data is not stored after your session ends.</p>
-  </div>
-  <div class="legal-section">
-    <h3>4. Photos</h3>
-    <p>Menu photos are sent to OpenAI for analysis and are not stored by Crave after your recommendation is generated.</p>
-  </div>
-  <div class="legal-section">
-    <h3>5. Third Party Services</h3>
-    <p>We use Firebase for authentication, OpenAI for menu analysis, and Foursquare for nearby restaurant data. Each has their own privacy policy.</p>
-  </div>
-  <div class="legal-section">
-    <h3>6. Contact</h3>
-    <p>Questions about privacy? Reach out via the app store listing or your account settings.</p>
-  </div>
+  <div class="legal-section"><h3>1. What We Collect</h3><p>We collect your email address or Google account info when you sign in. We also temporarily process menu photos you upload to generate recommendations.</p></div>
+  <div class="legal-section"><h3>2. How We Use It</h3><p>Your information is used only to provide the Crave service. We do not sell your data or share it with advertisers.</p></div>
+  <div class="legal-section"><h3>3. Location</h3><p>We request your location only to find nearby restaurants. Location data is not stored after your session ends.</p></div>
+  <div class="legal-section"><h3>4. Photos</h3><p>Menu photos are sent to OpenAI for analysis and are not stored by Crave after your recommendation is generated.</p></div>
+  <div class="legal-section"><h3>5. Third Party Services</h3><p>We use Firebase for authentication, OpenAI for menu analysis, and Foursquare for nearby restaurant data. Each has their own privacy policy.</p></div>
+  <div class="legal-section"><h3>6. Contact</h3><p>Questions about privacy? Reach out via the app store listing or your account settings.</p></div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -462,6 +567,7 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
   import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDRnuZVkPgBhgWcFDIjthWnWS_oF1X0bSU",
@@ -474,6 +580,7 @@
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
   onAuthStateChanged(auth, function(user) {
@@ -519,10 +626,182 @@
     await signOut(auth);
   };
 
+  // Group order functions
+  window.startGroup = async function() {
+    var user = window._firebaseUser;
+    if (!user) return;
+    showLoading("Creating group session...", "Generating your shareable link");
+    try {
+      var sessionRef = await addDoc(collection(db, "sessions"), {
+        createdBy: user.uid,
+        createdAt: Date.now(),
+        members: {
+          [user.uid]: {
+            name: user.displayName || user.email || "You",
+            craving: null,
+            hunger: null,
+            budget: null,
+            submitted: false
+          }
+        },
+        result: null
+      });
+      window._groupSessionId = sessionRef.id;
+      hideLoading();
+      showGroupSetup(sessionRef.id, user);
+      listenToSession(sessionRef.id);
+    } catch(e) {
+      hideLoading();
+      showToast("Could not create session. Try again.");
+    }
+  };
+
+  window.joinSession = async function(sessionId) {
+    var user = window._firebaseUser;
+    if (!user) return;
+    var sessionRef = doc(db, "sessions", sessionId);
+    var snap = await getDoc(sessionRef);
+    if (!snap.exists()) { showToast("Session not found"); return; }
+    window._groupSessionId = sessionId;
+    await updateDoc(sessionRef, {
+      ["members." + user.uid]: {
+        name: user.displayName || user.email || "Guest",
+        craving: null,
+        hunger: null,
+        budget: null,
+        submitted: false
+      }
+    });
+    listenToSession(sessionId);
+    showGroupInput();
+  };
+
+  window.submitGroupInput = async function() {
+    var user = window._firebaseUser;
+    var craving = document.getElementById("groupCravingInput").value.trim();
+    if (!craving) { showToast("Enter your craving first"); return; }
+    var sessionRef = doc(db, "sessions", window._groupSessionId);
+    await updateDoc(sessionRef, {
+      ["members." + user.uid + ".craving"]: craving,
+      ["members." + user.uid + ".hunger"]: window._groupHunger || 5,
+      ["members." + user.uid + ".budget"]: window._groupBudget || 20,
+      ["members." + user.uid + ".submitted"]: true
+    });
+    showToast("Your craving submitted! Waiting for others...");
+    document.getElementById("ctaBtn").disabled = true;
+    document.getElementById("ctaText").textContent = "Waiting for others...";
+  };
+
+  function listenToSession(sessionId) {
+    var sessionRef = doc(db, "sessions", sessionId);
+    window._sessionUnsubscribe = onSnapshot(sessionRef, async function(snap) {
+      var data = snap.data();
+      if (!data) return;
+      updateGroupStatus(data.members);
+
+      // Check if all submitted
+      var members = Object.values(data.members);
+      var allSubmitted = members.length > 1 && members.every(function(m) { return m.submitted; });
+
+      if (allSubmitted && !data.result) {
+        var isCreator = data.createdBy === window._firebaseUser.uid;
+        if (isCreator) {
+          // Only creator calls the AI
+          var cravings = members.map(function(m) { return m.name + " wants " + m.craving + " (hunger " + m.hunger + "/10, budget $" + m.budget + ")"; });
+          var token = await window._firebaseUser.getIdToken();
+          var res = await fetch("/api/group", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+            body: JSON.stringify({ members: cravings })
+          });
+          var result = await res.json();
+          await updateDoc(sessionRef, { result: result });
+        }
+      }
+
+      if (data.result) {
+        hideLoading();
+        showGroupResults(data.result);
+      }
+    });
+  }
+
+  function updateGroupStatus(members) {
+    var el = document.getElementById("groupMembers");
+    if (!el) return;
+    el.innerHTML = Object.values(members).map(function(m) {
+      return "<div class=\"group-person\">" +
+        "<div class=\"group-person-avatar\">" + (m.name || "?").charAt(0).toUpperCase() + "</div>" +
+        "<div class=\"group-person-name\">" + (m.name || "Guest") + "</div>" +
+        "<div class=\"group-person-status " + (m.submitted ? "status-ready" : "status-waiting") + "\">" +
+        (m.submitted ? "Ready ✓" : "Waiting...") +
+        "</div></div>";
+    }).join("");
+  }
+
+  function showGroupSetup(sessionId, user) {
+    hideAllSteps();
+    document.getElementById("stepGroup").classList.remove("hidden");
+    document.getElementById("progressBar").classList.add("hidden");
+    var url = window.location.origin + "?session=" + sessionId;
+    window._shareUrl = url;
+    document.getElementById("shareUrl").textContent = url;
+    document.getElementById("ctaWrap").classList.remove("hidden");
+    document.getElementById("ctaBtn").disabled = false;
+    document.getElementById("ctaText").textContent = "Enter my craving";
+    document.getElementById("ctaBtn").onclick = showGroupInput;
+    document.getElementById("startOverBtn").classList.remove("hidden");
+  }
+
+  function showGroupInput() {
+    hideAllSteps();
+    document.getElementById("stepGroupInput").classList.remove("hidden");
+    document.getElementById("ctaWrap").classList.remove("hidden");
+    document.getElementById("ctaBtn").disabled = false;
+    document.getElementById("ctaText").textContent = "Submit my craving";
+    document.getElementById("ctaBtn").onclick = window.submitGroupInput;
+    document.getElementById("startOverBtn").classList.remove("hidden");
+  }
+
+  function showGroupResults(data) {
+    hideAllSteps();
+    document.getElementById("stepGroupResults").classList.remove("hidden");
+    document.getElementById("progressBar").classList.add("hidden");
+    document.getElementById("ctaWrap").classList.remove("hidden");
+    document.getElementById("ctaBtn").classList.add("hidden");
+    document.getElementById("startOverBtn").classList.remove("hidden");
+    var el = document.getElementById("groupResults");
+    el.innerHTML = "";
+    if (data.top) {
+      var div = document.createElement("div");
+      div.className = "top-pick fade-in";
+      var tagsHtml = (data.top.tags || []).map(function(t) { return "<span class=\"pick-tag\">" + t + "</span>"; }).join("");
+      div.innerHTML = "<div class=\"pick-eyebrow\">Group Top Pick</div><div class=\"pick-title\">" + data.top.name + "</div><div class=\"pick-desc\">" + data.top.reason + "</div><div class=\"pick-tags\">" + tagsHtml + "</div>";
+      el.appendChild(div);
+    }
+    if (data.restaurant) {
+      var sh = document.createElement("div");
+      sh.className = "section-head";
+      sh.textContent = "Best restaurant for the group";
+      el.appendChild(sh);
+      var a = document.createElement("a");
+      a.className = "place-card fade-in";
+      a.href = data.restaurant.mapsUrl || "#";
+      a.target = "_blank";
+      a.innerHTML = "<div class=\"place-icon\">📍</div><div><div class=\"place-name\">" + data.restaurant.name + "</div><div class=\"place-meta\">" + data.restaurant.reason + "</div></div><div class=\"place-arrow\">›</div>";
+      el.appendChild(a);
+    }
+  }
+
+  window.copyShareLink = function() {
+    navigator.clipboard.writeText(window._shareUrl || "");
+    showToast("Link copied!");
+  };
+
   function enterApp(user) {
+    window._firebaseUser = user;
     document.getElementById("authScreen").classList.add("hidden");
     document.getElementById("appScreen").classList.remove("hidden");
-    document.getElementById("ctaWrap").classList.remove("hidden");
     var avatar = document.getElementById("avatarEl");
     if (user.photoURL) {
       avatar.innerHTML = "<img src=\"" + user.photoURL + "\" />";
@@ -530,8 +809,18 @@
       avatar.textContent = (user.displayName || user.email || "U").charAt(0).toUpperCase();
     }
     document.getElementById("avatarDropdownName").textContent = user.displayName || user.email || "Account";
-    updateCTA();
-    getLocation();
+    var firstName = (user.displayName || "").split(" ")[0] || "there";
+    document.getElementById("homeGreeting").textContent = "Hey " + firstName + ", what are you eating?";
+
+    // Check if joining via session link
+    var params = new URLSearchParams(window.location.search);
+    var sessionId = params.get("session");
+    if (sessionId) {
+      window.joinSession(sessionId);
+    } else {
+      goHome();
+      getLocation();
+    }
   }
 
   function showAuth() {
@@ -545,7 +834,7 @@
 </script>
 
 <script>
-  var step = 1;
+  var step = 0;
   var hasImage = false;
   var imageBase64 = "";
   var hunger = 5;
@@ -560,6 +849,44 @@
     7:"Very hungry", 8:"Starving", 9:"Absolutely starving", 10:"FAMISHED"
   };
 
+  function hideAllSteps() {
+    ["stepHome","step1","step2","step3","step4","stepGroup","stepGroupInput","stepGroupResults"].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.classList.add("hidden");
+    });
+    document.getElementById("ctaBtn").classList.remove("hidden");
+    document.getElementById("ctaBtn").onclick = nextStep;
+  }
+
+  function goHome() {
+    hideAllSteps();
+    step = 0;
+    document.getElementById("stepHome").classList.remove("hidden");
+    document.getElementById("progressBar").classList.remove("hidden");
+    document.getElementById("ctaWrap").classList.add("hidden");
+    document.getElementById("startOverBtn").classList.add("hidden");
+    for (var i = 1; i <= 4; i++) {
+      var seg = document.getElementById("seg" + i);
+      if (seg) seg.className = "progress-seg" + (i === 1 ? " active" : "");
+    }
+  }
+
+  function startSolo() {
+    step = 1;
+    hideAllSteps();
+    document.getElementById("step1").classList.remove("hidden");
+    document.getElementById("progressBar").classList.remove("hidden");
+    document.getElementById("ctaWrap").classList.remove("hidden");
+    document.getElementById("ctaBtn").onclick = nextStep;
+    document.getElementById("startOverBtn").classList.add("hidden");
+    updateCTA();
+  }
+
+  function goBack() {
+    if (step <= 1) { goHome(); return; }
+    goTo(step - 1);
+  }
+
   function toggleEmailForm() {
     document.getElementById("emailForm").classList.toggle("visible");
     document.getElementById("authError").textContent = "";
@@ -569,11 +896,10 @@
     document.getElementById("avatarDropdown").classList.toggle("hidden");
   }
 
-  // Close avatar menu when clicking outside
   document.addEventListener("click", function(e) {
     var dropdown = document.getElementById("avatarDropdown");
     var avatar = document.getElementById("avatarEl");
-    if (!dropdown.classList.contains("hidden") && !dropdown.contains(e.target) && e.target !== avatar) {
+    if (dropdown && !dropdown.classList.contains("hidden") && !dropdown.contains(e.target) && e.target !== avatar) {
       dropdown.classList.add("hidden");
     }
   });
@@ -585,12 +911,12 @@
     document.getElementById("authScreen").classList.add("hidden");
     document.getElementById("appScreen").classList.add("hidden");
     document.getElementById("ctaWrap").classList.add("hidden");
+    document.getElementById("tosScreen").classList.add(type === "tos" ? "hidden" : "hidden");
+    document.getElementById("privacyScreen").classList.add("hidden");
     if (type === "tos") {
       document.getElementById("tosScreen").classList.remove("hidden");
-      document.getElementById("privacyScreen").classList.add("hidden");
     } else {
       document.getElementById("privacyScreen").classList.remove("hidden");
-      document.getElementById("tosScreen").classList.add("hidden");
     }
   }
 
@@ -626,14 +952,11 @@
         var loader = document.getElementById("nearbyLoading");
         if (loader) loader.remove();
         if (!data.places || data.places.length === 0) return;
-        data.places.forEach(function(p, i) {
+        data.places.forEach(function(p) {
           var card = document.createElement("div");
           card.className = "loc-card";
           card.setAttribute("onclick", "toggleLoc(this)");
-          card.innerHTML =
-            "<div class=\"loc-icon\">" + (p.emoji || "🍴") + "</div>" +
-            "<div class=\"loc-info\"><div class=\"loc-name\">" + p.name + "</div><div class=\"loc-addr\">" + p.address + "</div><div class=\"loc-dist\">" + p.distance + "</div></div>" +
-            "<div class=\"loc-check\">✓</div>";
+          card.innerHTML = "<div class=\"loc-icon\">" + (p.emoji || "🍴") + "</div><div class=\"loc-info\"><div class=\"loc-name\">" + p.name + "</div><div class=\"loc-addr\">" + p.address + "</div><div class=\"loc-dist\">" + p.distance + "</div></div><div class=\"loc-check\">✓</div>";
           list.appendChild(card);
         });
       })
@@ -679,6 +1002,12 @@
     document.getElementById("hungerLabelText").textContent = hungerLabels[hunger];
   }
 
+  function updateGroupHunger(v) {
+    window._groupHunger = parseInt(v);
+    document.getElementById("groupHungerNum").textContent = v;
+    document.getElementById("groupHungerLabelText").textContent = hungerLabels[parseInt(v)];
+  }
+
   function setBudget(amount, el) {
     budget = amount;
     document.getElementById("budgetInput").value = amount;
@@ -687,14 +1016,32 @@
     el.classList.add("active");
   }
 
+  function setGroupBudget(amount, el) {
+    window._groupBudget = amount;
+    var chips = el.parentElement.querySelectorAll(".chip");
+    for (var i = 0; i < chips.length; i++) chips[i].classList.remove("active");
+    el.classList.add("active");
+  }
+
   function updateCTA() {
     var text = document.getElementById("ctaText");
     var btn = document.getElementById("ctaBtn");
+    var startOver = document.getElementById("startOverBtn");
     btn.disabled = false;
-    if (step === 1) text.textContent = hasImage ? "Looks good, continue" : "Skip — no photo";
-    else if (step === 2) text.textContent = "Next";
-    else if (step === 3) text.textContent = "Find my perfect order";
-    else document.getElementById("ctaWrap").classList.add("hidden");
+    btn.onclick = nextStep;
+    if (step === 1) {
+      text.textContent = hasImage ? "Looks good, continue" : "Skip — no photo";
+      startOver.classList.add("hidden");
+    } else if (step === 2) {
+      text.textContent = "Next";
+      startOver.classList.add("hidden");
+    } else if (step === 3) {
+      text.textContent = "Find my perfect order";
+      startOver.classList.add("hidden");
+    } else if (step === 4) {
+      btn.classList.add("hidden");
+      startOver.classList.remove("hidden");
+    }
   }
 
   function nextStep() {
@@ -708,9 +1055,10 @@
   }
 
   function goTo(n) {
-    document.getElementById("step" + step).classList.add("hidden");
+    hideAllSteps();
     step = n;
-    document.getElementById("step" + step).classList.remove("hidden");
+    document.getElementById("step" + n).classList.remove("hidden");
+    document.getElementById("progressBar").classList.remove("hidden");
     for (var i = 1; i <= 4; i++) {
       var seg = document.getElementById("seg" + i);
       if (!seg) continue;
@@ -739,17 +1087,23 @@
     showLoading("Reading your menu...", "Figuring out the perfect dish for you");
     var body = { craving: craving, hunger: hunger, budget: budgetVal, places: places, lat: userLat, lng: userLng };
     if (imageBase64) body.image = imageBase64.split(",")[1];
-    fetch("/api/recommend", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    })
-    .then(function(r) { return r.json(); })
-    .then(function(data) { hideLoading(); goTo(4); renderResults(data); })
-    .catch(function() {
-      hideLoading(); goTo(4);
-      document.getElementById("errorBox").classList.remove("hidden");
-      document.getElementById("errorBox").textContent = "Something went wrong. Check your API keys in Vercel.";
+
+    var user = window._firebaseUser;
+    if (!user) { hideLoading(); showToast("Please sign in first"); return; }
+
+    user.getIdToken().then(function(token) {
+      fetch("/api/recommend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+        body: JSON.stringify(body)
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) { hideLoading(); goTo(4); renderResults(data); })
+      .catch(function() {
+        hideLoading(); goTo(4);
+        document.getElementById("errorBox").classList.remove("hidden");
+        document.getElementById("errorBox").textContent = "Something went wrong. Check your API keys in Vercel.";
+      });
     });
   }
 
@@ -816,27 +1170,8 @@
   }
 
   function resetApp() {
-    step = 1; hasImage = false; imageBase64 = ""; hunger = 5; budget = 20;
+    step = 0; hasImage = false; imageBase64 = ""; hunger = 5; budget = 20;
     userLat = null; userLng = null;
-    var s1 = document.getElementById("step1");
-    if (s1) s1.classList.remove("hidden");
-    ["step2","step3","step4"].forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) el.classList.add("hidden");
-    });
-    var results = document.getElementById("results");
-    if (results) results.innerHTML = "";
-    var zone = document.getElementById("cameraZone");
-    if (zone) {
-      zone.innerHTML = "<div class=\"camera-overlay\"><div class=\"cam-icon-wrap\">📷</div><div class=\"cam-label\">Tap to take a photo</div><div class=\"cam-sub\">or upload from gallery</div></div>";
-      zone.onclick = null;
-    }
-    var nearbyList = document.getElementById("nearbyList");
-    if (nearbyList) nearbyList.innerHTML = "<div class=\"loc-card selected\" id=\"loc-current\" onclick=\"toggleLoc(this)\"><div class=\"loc-icon\">📋</div><div class=\"loc-info\"><div class=\"loc-name\">This menu</div><div class=\"loc-addr\">The restaurant you are in now</div><div class=\"loc-dist\">Here now</div></div><div class=\"loc-check\">✓</div></div><div id=\"nearbyLoading\" style=\"color:#555;font-size:13px;padding:12px 0;\">Finding places near you...</div>";
-    for (var i = 1; i <= 4; i++) {
-      var seg = document.getElementById("seg" + i);
-      if (seg) seg.className = "progress-seg" + (i === 1 ? " active" : "");
-    }
   }
 </script>
 </body>
