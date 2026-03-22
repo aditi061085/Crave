@@ -68,11 +68,7 @@
     .email-input:focus { border-color: #444; }
     .email-input::placeholder { color: #333; }
     .email-row { display: flex; gap: 8px; }
-    .btn-email-action {
-      flex: 1; border-radius: 12px; padding: 14px;
-      font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
-      transition: opacity 0.15s; border: none;
-    }
+    .btn-email-action { flex: 1; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.15s; border: none; }
     .btn-email-signin { background: #fff; color: #000; }
     .btn-email-signup { background: #111; color: #fff; border: 1px solid #333 !important; }
     .btn-email-cancel { background: transparent; color: var(--muted2); border: 1px solid #222; border-radius: 12px; padding: 14px 16px; font-size: 15px; cursor: pointer; font-family: inherit; }
@@ -93,7 +89,6 @@
       cursor: pointer; overflow: hidden;
     }
     .header-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-
     .avatar-dropdown {
       position: fixed; top: 108px; right: 24px;
       background: #111; border: 1px solid #222; border-radius: 14px;
@@ -115,49 +110,24 @@
     .step-title { font-size: 28px; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; line-height: 1.15; }
     .step-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; line-height: 1.6; }
 
-    /* Back button */
-    .back-btn {
-      display: flex; align-items: center; gap: 6px;
-      background: none; border: none; color: var(--muted2);
-      font-size: 14px; font-weight: 600; cursor: pointer;
-      font-family: inherit; padding: 0; margin-bottom: 20px;
-      transition: color 0.15s;
-    }
+    .back-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; padding: 0; margin-bottom: 20px; transition: color 0.15s; }
     .back-btn:hover { color: #fff; }
 
-    /* Home screen */
+    /* Home */
     .home-greeting { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
     .home-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; }
-    .home-card {
-      background: #0a0a0a; border: 1px solid #1e1e1e;
-      border-radius: 18px; padding: 20px;
-      margin-bottom: 12px; cursor: pointer;
-      transition: border-color 0.2s;
-      display: flex; align-items: center; gap: 16px;
-    }
+    .home-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 18px; padding: 20px; margin-bottom: 12px; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; gap: 16px; }
     .home-card:hover { border-color: #333; }
-    .home-card-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      background: #111; display: flex; align-items: center;
-      justify-content: center; font-size: 22px; flex-shrink: 0;
-    }
+    .home-card-icon { width: 48px; height: 48px; border-radius: 14px; background: #111; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
     .home-card-title { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
     .home-card-sub { font-size: 13px; color: var(--muted2); }
     .home-card-arrow { color: var(--muted); font-size: 20px; margin-left: auto; }
 
     /* Camera */
-    .camera-zone {
-      width: 100%; aspect-ratio: 3/2; background: #0a0a0a;
-      border: 1px solid #1e1e1e; border-radius: 20px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; cursor: pointer; overflow: hidden; position: relative; transition: border-color 0.2s;
-    }
+    .camera-zone { width: 100%; aspect-ratio: 3/2; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; cursor: pointer; overflow: hidden; position: relative; transition: border-color 0.2s; }
     .camera-zone:hover { border-color: #333; }
     .camera-zone img { width: 100%; height: 100%; object-fit: cover; }
-    .camera-overlay {
-      position: absolute; inset: 0; background: rgba(0,0,0,0.5);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-    }
+    .camera-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
     .cam-icon-wrap { width: 52px; height: 52px; background: rgba(255,255,255,0.08); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
     .cam-label { font-size: 14px; font-weight: 600; color: #fff; }
     .cam-sub { font-size: 12px; color: rgba(255,255,255,0.4); }
@@ -198,41 +168,19 @@
     .loc-check { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 11px; color: transparent; transition: all 0.2s; flex-shrink: 0; }
     .loc-card.selected .loc-check { background: #fff; border-color: #fff; color: #000; }
 
-    /* Group order */
-    .group-status {
-      background: #0a0a0a; border: 1px solid #1e1e1e;
-      border-radius: 16px; padding: 16px; margin-bottom: 12px;
-    }
+    /* Group */
+    .group-status { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 16px; padding: 16px; margin-bottom: 12px; }
     .group-status-title { font-size: 13px; font-weight: 700; color: var(--muted2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
-    .group-person {
-      display: flex; align-items: center; gap: 12px;
-      padding: 10px 0; border-bottom: 1px solid #111;
-    }
+    .group-person { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #111; }
     .group-person:last-child { border-bottom: none; }
-    .group-person-avatar {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: #1a1a1a; border: 1px solid #222;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; color: var(--muted2); flex-shrink: 0;
-    }
+    .group-person-avatar { width: 32px; height: 32px; border-radius: 50%; background: #1a1a1a; border: 1px solid #222; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--muted2); flex-shrink: 0; }
     .group-person-name { font-size: 14px; font-weight: 600; flex: 1; }
     .group-person-status { font-size: 12px; font-weight: 600; }
     .status-waiting { color: var(--muted); }
     .status-ready { color: #22c55e; }
-
-    .share-box {
-      background: #0a0a0a; border: 1px solid #1e1e1e;
-      border-radius: 14px; padding: 14px 16px;
-      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
-    }
+    .share-box { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .share-url { font-size: 13px; color: var(--muted2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .share-copy-btn {
-      background: #fff; color: #000; border: none;
-      border-radius: 8px; padding: 8px 14px;
-      font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
-      flex-shrink: 0; transition: opacity 0.15s;
-    }
-    .share-copy-btn:hover { opacity: 0.85; }
+    .share-copy-btn { background: #fff; color: #000; border: none; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; }
 
     /* CTA */
     .cta-wrap { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 24px 40px; background: linear-gradient(transparent, #000 40%); }
@@ -365,7 +313,7 @@
   <div class="app-body">
 
     <!-- HOME -->
-    <div id="stepHome" class="fade-in">
+    <div id="stepHome" class="fade-in hidden">
       <div class="home-greeting" id="homeGreeting">What are you eating?</div>
       <div class="home-sub">Choose how you want to order</div>
       <div class="home-card" onclick="startSolo()">
@@ -434,7 +382,7 @@
       <div class="field-group">
         <label class="field-label">Nearby restaurants</label>
         <div id="nearbyList">
-          <div class="loc-card selected" id="loc-current" onclick="toggleLoc(this)">
+          <div class="loc-card selected" onclick="toggleLoc(this)">
             <div class="loc-icon">📋</div>
             <div class="loc-info">
               <div class="loc-name">This menu</div>
@@ -461,7 +409,7 @@
       </div>
     </div>
 
-    <!-- STEP 4 — RESULTS -->
+    <!-- STEP 4 -->
     <div id="step4" class="fade-in hidden">
       <button class="back-btn" onclick="goBack()">← Back</button>
       <div class="step-label">Your order</div>
@@ -477,11 +425,11 @@
       <div class="step-label">Group Order</div>
       <div class="step-title">Invite your group</div>
       <div class="step-sub">Share this link so everyone can add their cravings</div>
-      <div class="share-box" id="shareBox">
+      <div class="share-box">
         <div class="share-url" id="shareUrl">Generating link...</div>
         <button class="share-copy-btn" onclick="copyShareLink()">Copy</button>
       </div>
-      <div class="group-status" id="groupStatus">
+      <div class="group-status">
         <div class="group-status-title">Waiting for everyone</div>
         <div id="groupMembers"></div>
       </div>
@@ -540,7 +488,7 @@
   <button class="legal-back" onclick="hideLegal()">← Back</button>
   <div class="legal-title">Terms of Service</div>
   <div class="legal-date">Last updated March 2026</div>
-  <div class="legal-section"><h3>1. Acceptance of Terms</h3><p>By using Crave you agree to these terms. If you do not agree, please do not use the app.</p></div>
+  <div class="legal-section"><h3>1. Acceptance of Terms</h3><p>By using Crave you agree to these terms. If you do not agree please do not use the app.</p></div>
   <div class="legal-section"><h3>2. What Crave Does</h3><p>Crave uses AI to analyze menu photos and provide personalized food recommendations based on your stated preferences, hunger level, and budget. Recommendations are suggestions only.</p></div>
   <div class="legal-section"><h3>3. Your Account</h3><p>You are responsible for keeping your login credentials secure. You must be 13 or older to use Crave.</p></div>
   <div class="legal-section"><h3>4. Your Content</h3><p>Photos you upload are used only to generate your recommendation and are not stored or shared with third parties.</p></div>
@@ -626,7 +574,6 @@
     await signOut(auth);
   };
 
-  // Group order functions
   window.startGroup = async function() {
     var user = window._firebaseUser;
     if (!user) return;
@@ -638,17 +585,14 @@
         members: {
           [user.uid]: {
             name: user.displayName || user.email || "You",
-            craving: null,
-            hunger: null,
-            budget: null,
-            submitted: false
+            craving: null, hunger: null, budget: null, submitted: false
           }
         },
         result: null
       });
       window._groupSessionId = sessionRef.id;
       hideLoading();
-      showGroupSetup(sessionRef.id, user);
+      showGroupSetup(sessionRef.id);
       listenToSession(sessionRef.id);
     } catch(e) {
       hideLoading();
@@ -666,10 +610,7 @@
     await updateDoc(sessionRef, {
       ["members." + user.uid]: {
         name: user.displayName || user.email || "Guest",
-        craving: null,
-        hunger: null,
-        budget: null,
-        submitted: false
+        craving: null, hunger: null, budget: null, submitted: false
       }
     });
     listenToSession(sessionId);
@@ -698,15 +639,11 @@
       var data = snap.data();
       if (!data) return;
       updateGroupStatus(data.members);
-
-      // Check if all submitted
       var members = Object.values(data.members);
       var allSubmitted = members.length > 1 && members.every(function(m) { return m.submitted; });
-
       if (allSubmitted && !data.result) {
         var isCreator = data.createdBy === window._firebaseUser.uid;
         if (isCreator) {
-          // Only creator calls the AI
           var cravings = members.map(function(m) { return m.name + " wants " + m.craving + " (hunger " + m.hunger + "/10, budget $" + m.budget + ")"; });
           var token = await window._firebaseUser.getIdToken();
           var res = await fetch("/api/group", {
@@ -718,11 +655,7 @@
           await updateDoc(sessionRef, { result: result });
         }
       }
-
-      if (data.result) {
-        hideLoading();
-        showGroupResults(data.result);
-      }
+      if (data.result) { hideLoading(); showGroupResults(data.result); }
     });
   }
 
@@ -730,16 +663,11 @@
     var el = document.getElementById("groupMembers");
     if (!el) return;
     el.innerHTML = Object.values(members).map(function(m) {
-      return "<div class=\"group-person\">" +
-        "<div class=\"group-person-avatar\">" + (m.name || "?").charAt(0).toUpperCase() + "</div>" +
-        "<div class=\"group-person-name\">" + (m.name || "Guest") + "</div>" +
-        "<div class=\"group-person-status " + (m.submitted ? "status-ready" : "status-waiting") + "\">" +
-        (m.submitted ? "Ready ✓" : "Waiting...") +
-        "</div></div>";
+      return "<div class=\"group-person\"><div class=\"group-person-avatar\">" + (m.name || "?").charAt(0).toUpperCase() + "</div><div class=\"group-person-name\">" + (m.name || "Guest") + "</div><div class=\"group-person-status " + (m.submitted ? "status-ready" : "status-waiting") + "\">" + (m.submitted ? "Ready ✓" : "Waiting...") + "</div></div>";
     }).join("");
   }
 
-  function showGroupSetup(sessionId, user) {
+  function showGroupSetup(sessionId) {
     hideAllSteps();
     document.getElementById("stepGroup").classList.remove("hidden");
     document.getElementById("progressBar").classList.add("hidden");
@@ -748,8 +676,8 @@
     document.getElementById("shareUrl").textContent = url;
     document.getElementById("ctaWrap").classList.remove("hidden");
     document.getElementById("ctaBtn").disabled = false;
-    document.getElementById("ctaText").textContent = "Enter my craving";
     document.getElementById("ctaBtn").onclick = showGroupInput;
+    document.getElementById("ctaText").textContent = "Enter my craving";
     document.getElementById("startOverBtn").classList.remove("hidden");
   }
 
@@ -758,8 +686,8 @@
     document.getElementById("stepGroupInput").classList.remove("hidden");
     document.getElementById("ctaWrap").classList.remove("hidden");
     document.getElementById("ctaBtn").disabled = false;
-    document.getElementById("ctaText").textContent = "Submit my craving";
     document.getElementById("ctaBtn").onclick = window.submitGroupInput;
+    document.getElementById("ctaText").textContent = "Submit my craving";
     document.getElementById("startOverBtn").classList.remove("hidden");
   }
 
@@ -811,8 +739,6 @@
     document.getElementById("avatarDropdownName").textContent = user.displayName || user.email || "Account";
     var firstName = (user.displayName || "").split(" ")[0] || "there";
     document.getElementById("homeGreeting").textContent = "Hey " + firstName + ", what are you eating?";
-
-    // Check if joining via session link
     var params = new URLSearchParams(window.location.search);
     var sessionId = params.get("session");
     if (sessionId) {
@@ -829,7 +755,6 @@
     document.getElementById("ctaWrap").classList.add("hidden");
     document.getElementById("tosScreen").classList.add("hidden");
     document.getElementById("privacyScreen").classList.add("hidden");
-    resetApp();
   }
 </script>
 
@@ -906,12 +831,11 @@
 
   function showLegal(type) {
     document.getElementById("avatarDropdown").classList.add("hidden");
-    var fromApp = !document.getElementById("appScreen").classList.contains("hidden");
-    legalFrom = fromApp ? "app" : "auth";
+    legalFrom = !document.getElementById("appScreen").classList.contains("hidden") ? "app" : "auth";
     document.getElementById("authScreen").classList.add("hidden");
     document.getElementById("appScreen").classList.add("hidden");
     document.getElementById("ctaWrap").classList.add("hidden");
-    document.getElementById("tosScreen").classList.add(type === "tos" ? "hidden" : "hidden");
+    document.getElementById("tosScreen").classList.add("hidden");
     document.getElementById("privacyScreen").classList.add("hidden");
     if (type === "tos") {
       document.getElementById("tosScreen").classList.remove("hidden");
@@ -932,35 +856,58 @@
   }
 
   function getLocation() {
-    if (!navigator.geolocation) return;
-    navigator.geolocation.getCurrentPosition(function(pos) {
-      userLat = pos.coords.latitude;
-      userLng = pos.coords.longitude;
-      loadNearbyPlaces();
-    }, function() {
+    if (!navigator.geolocation) {
       var loader = document.getElementById("nearbyLoading");
-      if (loader) loader.textContent = "Enable location to see nearby places";
-    });
+      if (loader) loader.textContent = "Location not supported on this device";
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        userLat = pos.coords.latitude;
+        userLng = pos.coords.longitude;
+        loadNearbyPlaces();
+      },
+      function(err) {
+        var loader = document.getElementById("nearbyLoading");
+        if (loader) loader.textContent = "Enable location to see nearby places";
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
   }
 
   function loadNearbyPlaces() {
     if (!userLat || !userLng) return;
+    var loader = document.getElementById("nearbyLoading");
+    if (loader) loader.textContent = "Loading nearby restaurants...";
     fetch("/api/places?lat=" + userLat + "&lng=" + userLng)
       .then(function(r) { return r.json(); })
       .then(function(data) {
         var list = document.getElementById("nearbyList");
         var loader = document.getElementById("nearbyLoading");
         if (loader) loader.remove();
-        if (!data.places || data.places.length === 0) return;
+        if (!data.places || data.places.length === 0) {
+          var msg = document.createElement("div");
+          msg.style.cssText = "color:#555;font-size:13px;padding:12px 0;";
+          msg.textContent = "No nearby restaurants found";
+          list.appendChild(msg);
+          return;
+        }
         data.places.forEach(function(p) {
           var card = document.createElement("div");
           card.className = "loc-card";
           card.setAttribute("onclick", "toggleLoc(this)");
-          card.innerHTML = "<div class=\"loc-icon\">" + (p.emoji || "🍴") + "</div><div class=\"loc-info\"><div class=\"loc-name\">" + p.name + "</div><div class=\"loc-addr\">" + p.address + "</div><div class=\"loc-dist\">" + p.distance + "</div></div><div class=\"loc-check\">✓</div>";
+          card.innerHTML =
+            "<div class=\"loc-icon\">" + (p.emoji || "🍴") + "</div>" +
+            "<div class=\"loc-info\">" +
+              "<div class=\"loc-name\">" + p.name + "</div>" +
+              "<div class=\"loc-addr\">" + p.address + "</div>" +
+              "<div class=\"loc-dist\">" + p.distance + "</div>" +
+            "</div>" +
+            "<div class=\"loc-check\">✓</div>";
           list.appendChild(card);
         });
       })
-      .catch(function() {
+      .catch(function(err) {
         var loader = document.getElementById("nearbyLoading");
         if (loader) loader.textContent = "Could not load nearby places";
       });
@@ -1029,6 +976,7 @@
     var startOver = document.getElementById("startOverBtn");
     btn.disabled = false;
     btn.onclick = nextStep;
+    btn.classList.remove("hidden");
     if (step === 1) {
       text.textContent = hasImage ? "Looks good, continue" : "Skip — no photo";
       startOver.classList.add("hidden");
@@ -1087,10 +1035,8 @@
     showLoading("Reading your menu...", "Figuring out the perfect dish for you");
     var body = { craving: craving, hunger: hunger, budget: budgetVal, places: places, lat: userLat, lng: userLng };
     if (imageBase64) body.image = imageBase64.split(",")[1];
-
     var user = window._firebaseUser;
     if (!user) { hideLoading(); showToast("Please sign in first"); return; }
-
     user.getIdToken().then(function(token) {
       fetch("/api/recommend", {
         method: "POST",
@@ -1110,9 +1056,11 @@
   function renderResults(data) {
     var el = document.getElementById("results");
     el.innerHTML = "";
+    var errBox = document.getElementById("errorBox");
+    errBox.classList.add("hidden");
     if (data.error) {
-      document.getElementById("errorBox").classList.remove("hidden");
-      document.getElementById("errorBox").textContent = data.error;
+      errBox.classList.remove("hidden");
+      errBox.textContent = data.error;
       return;
     }
     if (data.top) {
@@ -1157,21 +1105,18 @@
     document.getElementById("appScreen").classList.add("hidden");
     document.getElementById("ctaWrap").classList.add("hidden");
   }
+
   function hideLoading() {
     document.getElementById("loadingScreen").classList.add("hidden");
     document.getElementById("appScreen").classList.remove("hidden");
     document.getElementById("ctaWrap").classList.remove("hidden");
   }
+
   function showToast(msg) {
     var t = document.getElementById("toast");
     t.textContent = msg;
     t.classList.add("show");
     setTimeout(function() { t.classList.remove("show"); }, 2600);
-  }
-
-  function resetApp() {
-    step = 0; hasImage = false; imageBase64 = ""; hunger = 5; budget = 20;
-    userLat = null; userLng = null;
   }
 </script>
 </body>
