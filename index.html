@@ -23,7 +23,6 @@
       min-height: 100vh; overflow-x: hidden;
     }
 
-    /* AUTH */
     .auth-screen {
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: flex-end;
@@ -76,7 +75,6 @@
     .auth-terms { text-align: center; color: var(--muted); font-size: 12px; margin-top: 20px; line-height: 1.7; }
     .auth-terms a { color: #666; text-decoration: underline; cursor: pointer; }
 
-    /* APP */
     .app-screen { min-height: 100vh; display: flex; flex-direction: column; max-width: 430px; margin: 0 auto; }
     .app-header { padding: 60px 24px 16px; display: flex; align-items: center; justify-content: space-between; }
     .header-left { display: flex; align-items: center; gap: 10px; }
@@ -113,7 +111,6 @@
     .back-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; padding: 0; margin-bottom: 20px; transition: color 0.15s; }
     .back-btn:hover { color: #fff; }
 
-    /* Home */
     .home-greeting { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
     .home-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; }
     .home-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 18px; padding: 20px; margin-bottom: 12px; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; gap: 16px; }
@@ -123,7 +120,6 @@
     .home-card-sub { font-size: 13px; color: var(--muted2); }
     .home-card-arrow { color: var(--muted); font-size: 20px; margin-left: auto; }
 
-    /* Camera */
     .camera-zone { width: 100%; aspect-ratio: 3/2; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; cursor: pointer; overflow: hidden; position: relative; transition: border-color 0.2s; }
     .camera-zone:hover { border-color: #333; }
     .camera-zone img { width: 100%; height: 100%; object-fit: cover; }
@@ -168,7 +164,6 @@
     .loc-check { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 11px; color: transparent; transition: all 0.2s; flex-shrink: 0; }
     .loc-card.selected .loc-check { background: #fff; border-color: #fff; color: #000; }
 
-    /* Group */
     .group-status { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 16px; padding: 16px; margin-bottom: 12px; }
     .group-status-title { font-size: 13px; font-weight: 700; color: var(--muted2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
     .group-person { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #111; }
@@ -182,7 +177,15 @@
     .share-url { font-size: 13px; color: var(--muted2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .share-copy-btn { background: #fff; color: #000; border: none; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; }
 
-    /* CTA */
+    /* Host confirm banner */
+    .host-banner {
+      background: #0f1a0f; border: 1px solid #1a3a1a;
+      border-radius: 14px; padding: 16px;
+      margin-bottom: 16px; text-align: center;
+    }
+    .host-banner-title { font-size: 16px; font-weight: 800; color: #22c55e; margin-bottom: 6px; }
+    .host-banner-sub { font-size: 13px; color: var(--muted2); }
+
     .cta-wrap { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 24px 40px; background: linear-gradient(transparent, #000 40%); }
     .cta-inner { max-width: 382px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
     .btn-cta { width: 100%; background: #fff; color: #000; border: none; border-radius: 14px; padding: 17px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
@@ -191,7 +194,6 @@
     .btn-cta-outline { width: 100%; background: transparent; color: #fff; border: 1px solid #222; border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: border-color 0.15s; }
     .btn-cta-outline:hover { border-color: #444; }
 
-    /* Loading */
     .loading-screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 40px; background: #000; }
     .loading-logo { font-size: 32px; font-weight: 800; letter-spacing: -1px; color: #fff; }
     .loading-ring { width: 44px; height: 44px; border: 1.5px solid #1e1e1e; border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
@@ -199,7 +201,6 @@
     .loading-msg { color: var(--muted2); font-size: 15px; text-align: center; line-height: 1.7; }
     .loading-msg strong { color: #fff; }
 
-    /* Results */
     .top-pick { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 20px; padding: 20px; margin-bottom: 16px; }
     .pick-eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 10px; }
     .pick-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
@@ -221,7 +222,6 @@
     .place-arrow { color: #333; font-size: 20px; margin-left: auto; }
     .error-box { background: #0f0a0a; border: 1px solid #2a1a1a; border-radius: 12px; padding: 14px 16px; font-size: 13px; color: #cc4444; line-height: 1.6; margin-bottom: 16px; }
 
-    /* Legal */
     .legal-screen { min-height: 100vh; background: #000; padding: 60px 24px 80px; max-width: 430px; margin: 0 auto; }
     .legal-back { display: flex; align-items: center; gap: 8px; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: 32px; background: none; border: none; font-family: inherit; }
     .legal-back:hover { color: #fff; }
@@ -439,7 +439,7 @@
     <div id="stepGroupInput" class="fade-in hidden">
       <div class="step-label">Group Order — Your Input</div>
       <div class="step-title">What are you craving?</div>
-      <div class="step-sub">Once everyone submits, Crave finds the best match for the group</div>
+      <div class="step-sub">Once everyone submits, the host will confirm and Crave finds the best match</div>
       <div class="field-group">
         <label class="field-label">I am craving</label>
         <input type="text" class="text-input" id="groupCravingInput" placeholder="e.g. something spicy, pasta, sushi..." />
@@ -459,6 +459,32 @@
           <button class="chip" onclick="setGroupBudget(35,this)">Under $35</button>
           <button class="chip" onclick="setGroupBudget(50,this)">Under $50</button>
         </div>
+      </div>
+    </div>
+
+    <!-- GROUP WAITING (non-host after submitting) -->
+    <div id="stepGroupWaiting" class="fade-in hidden">
+      <div class="step-label">Group Order</div>
+      <div class="step-title">Craving submitted!</div>
+      <div class="step-sub">Waiting for the host to confirm and find your group order</div>
+      <div class="group-status">
+        <div class="group-status-title">Group status</div>
+        <div id="groupMembersWaiting"></div>
+      </div>
+    </div>
+
+    <!-- GROUP HOST CONFIRM -->
+    <div id="stepGroupConfirm" class="fade-in hidden">
+      <div class="step-label">Group Order — Host</div>
+      <div class="step-title">Everyone is ready</div>
+      <div class="step-sub">All members have submitted their cravings. Confirm to find the best order for your group.</div>
+      <div class="host-banner">
+        <div class="host-banner-title">✓ All cravings collected</div>
+        <div class="host-banner-sub">Tap confirm below to get your group recommendation</div>
+      </div>
+      <div class="group-status">
+        <div class="group-status-title">Your group</div>
+        <div id="groupMembersConfirm"></div>
       </div>
     </div>
 
@@ -515,7 +541,7 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
   import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-  import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+  import { getFirestore, doc, onSnapshot, collection, addDoc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDRnuZVkPgBhgWcFDIjthWnWS_oF1X0bSU",
@@ -578,6 +604,7 @@
     var user = window._firebaseUser;
     if (!user) return;
     showLoading("Creating group session...", "Generating your shareable link");
+    window._hostConfirmShown = false;
     try {
       var sessionRef = await addDoc(collection(db, "sessions"), {
         createdBy: user.uid,
@@ -607,6 +634,7 @@
     var snap = await getDoc(sessionRef);
     if (!snap.exists()) { showToast("Session not found"); return; }
     window._groupSessionId = sessionId;
+    window._hostConfirmShown = false;
     await updateDoc(sessionRef, {
       ["members." + user.uid]: {
         name: user.displayName || user.email || "Guest",
@@ -628,42 +656,92 @@
       ["members." + user.uid + ".budget"]: window._groupBudget || 20,
       ["members." + user.uid + ".submitted"]: true
     });
-    showToast("Your craving submitted! Waiting for others...");
+    // Non-host goes to waiting screen
+    var isCreator = window._sessionData && window._sessionData.createdBy === user.uid;
+    if (!isCreator) {
+      hideAllSteps();
+      document.getElementById("stepGroupWaiting").classList.remove("hidden");
+      document.getElementById("ctaWrap").classList.add("hidden");
+    } else {
+      document.getElementById("ctaBtn").disabled = true;
+      document.getElementById("ctaText").textContent = "Waiting for others...";
+    }
+  };
+
+  window.confirmGroupOrder = async function() {
+    var user = window._firebaseUser;
+    if (!user || !window._sessionData) return;
+    var members = Object.values(window._sessionData.members);
     document.getElementById("ctaBtn").disabled = true;
-    document.getElementById("ctaText").textContent = "Waiting for others...";
+    document.getElementById("ctaText").textContent = "Finding best match...";
+    showLoading("Finding your group order...", "Comparing everyone's cravings");
+    var cravings = members.map(function(m) {
+      return m.name + " wants " + m.craving + " (hunger " + m.hunger + "/10, budget $" + m.budget + ")";
+    });
+    var token = await user.getIdToken();
+    try {
+      var res = await fetch("/api/group", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+        body: JSON.stringify({ members: cravings })
+      });
+      var result = await res.json();
+      var sessionRef = doc(db, "sessions", window._groupSessionId);
+      await updateDoc(sessionRef, { result: result });
+    } catch(e) {
+      hideLoading();
+      showToast("Something went wrong. Try again.");
+    }
   };
 
   function listenToSession(sessionId) {
     var sessionRef = doc(db, "sessions", sessionId);
-    window._sessionUnsubscribe = onSnapshot(sessionRef, async function(snap) {
+    window._sessionUnsubscribe = onSnapshot(sessionRef, function(snap) {
       var data = snap.data();
       if (!data) return;
-      updateGroupStatus(data.members);
+      window._sessionData = data;
+      var user = window._firebaseUser;
+      var isCreator = data.createdBy === user.uid;
       var members = Object.values(data.members);
       var allSubmitted = members.length > 1 && members.every(function(m) { return m.submitted; });
-      if (allSubmitted && !data.result) {
-        var isCreator = data.createdBy === window._firebaseUser.uid;
-        if (isCreator) {
-          var cravings = members.map(function(m) { return m.name + " wants " + m.craving + " (hunger " + m.hunger + "/10, budget $" + m.budget + ")"; });
-          var token = await window._firebaseUser.getIdToken();
-          var res = await fetch("/api/group", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
-            body: JSON.stringify({ members: cravings })
-          });
-          var result = await res.json();
-          await updateDoc(sessionRef, { result: result });
-        }
+
+      // Update status lists
+      updateGroupMembersList("groupMembers", members);
+      updateGroupMembersList("groupMembersWaiting", members);
+      updateGroupMembersList("groupMembersConfirm", members);
+
+      // Show host confirm screen when all submitted
+      if (allSubmitted && !data.result && !window._hostConfirmShown && isCreator) {
+        window._hostConfirmShown = true;
+        hideAllSteps();
+        document.getElementById("stepGroupConfirm").classList.remove("hidden");
+        document.getElementById("ctaWrap").classList.remove("hidden");
+        document.getElementById("ctaBtn").classList.remove("hidden");
+        document.getElementById("ctaBtn").disabled = false;
+        document.getElementById("ctaText").textContent = "Confirm — find our order";
+        document.getElementById("ctaBtn").onclick = window.confirmGroupOrder;
+        document.getElementById("startOverBtn").classList.remove("hidden");
+        updateGroupMembersList("groupMembersConfirm", members);
       }
-      if (data.result) { hideLoading(); showGroupResults(data.result); }
+
+      // Show results when ready
+      if (data.result) {
+        hideLoading();
+        window._hostConfirmShown = false;
+        showGroupResults(data.result);
+      }
     });
   }
 
-  function updateGroupStatus(members) {
-    var el = document.getElementById("groupMembers");
+  function updateGroupMembersList(elId, members) {
+    var el = document.getElementById(elId);
     if (!el) return;
-    el.innerHTML = Object.values(members).map(function(m) {
-      return "<div class=\"group-person\"><div class=\"group-person-avatar\">" + (m.name || "?").charAt(0).toUpperCase() + "</div><div class=\"group-person-name\">" + (m.name || "Guest") + "</div><div class=\"group-person-status " + (m.submitted ? "status-ready" : "status-waiting") + "\">" + (m.submitted ? "Ready ✓" : "Waiting...") + "</div></div>";
+    el.innerHTML = members.map(function(m) {
+      return "<div class=\"group-person\">" +
+        "<div class=\"group-person-avatar\">" + (m.name || "?").charAt(0).toUpperCase() + "</div>" +
+        "<div class=\"group-person-name\">" + (m.name || "Guest") + "</div>" +
+        "<div class=\"group-person-status " + (m.submitted ? "status-ready" : "status-waiting") + "\">" +
+        (m.submitted ? "Ready ✓" : "Waiting...") + "</div></div>";
     }).join("");
   }
 
@@ -675,6 +753,7 @@
     window._shareUrl = url;
     document.getElementById("shareUrl").textContent = url;
     document.getElementById("ctaWrap").classList.remove("hidden");
+    document.getElementById("ctaBtn").classList.remove("hidden");
     document.getElementById("ctaBtn").disabled = false;
     document.getElementById("ctaBtn").onclick = showGroupInput;
     document.getElementById("ctaText").textContent = "Enter my craving";
@@ -685,6 +764,7 @@
     hideAllSteps();
     document.getElementById("stepGroupInput").classList.remove("hidden");
     document.getElementById("ctaWrap").classList.remove("hidden");
+    document.getElementById("ctaBtn").classList.remove("hidden");
     document.getElementById("ctaBtn").disabled = false;
     document.getElementById("ctaBtn").onclick = window.submitGroupInput;
     document.getElementById("ctaText").textContent = "Submit my craving";
@@ -775,7 +855,8 @@
   };
 
   function hideAllSteps() {
-    ["stepHome","step1","step2","step3","step4","stepGroup","stepGroupInput","stepGroupResults"].forEach(function(id) {
+    ["stepHome","step1","step2","step3","step4","stepGroup","stepGroupInput",
+     "stepGroupWaiting","stepGroupConfirm","stepGroupResults"].forEach(function(id) {
       var el = document.getElementById(id);
       if (el) el.classList.add("hidden");
     });
@@ -784,6 +865,9 @@
   }
 
   function goHome() {
+    if (window._sessionUnsubscribe) { window._sessionUnsubscribe(); window._sessionUnsubscribe = null; }
+    window._hostConfirmShown = false;
+    window._sessionData = null;
     hideAllSteps();
     step = 0;
     document.getElementById("stepHome").classList.remove("hidden");
@@ -867,7 +951,7 @@
         userLng = pos.coords.longitude;
         loadNearbyPlaces();
       },
-      function(err) {
+      function() {
         var loader = document.getElementById("nearbyLoading");
         if (loader) loader.textContent = "Enable location to see nearby places";
       },
@@ -898,16 +982,14 @@
           card.setAttribute("onclick", "toggleLoc(this)");
           card.innerHTML =
             "<div class=\"loc-icon\">" + (p.emoji || "🍴") + "</div>" +
-            "<div class=\"loc-info\">" +
-              "<div class=\"loc-name\">" + p.name + "</div>" +
-              "<div class=\"loc-addr\">" + p.address + "</div>" +
-              "<div class=\"loc-dist\">" + p.distance + "</div>" +
-            "</div>" +
+            "<div class=\"loc-info\"><div class=\"loc-name\">" + p.name + "</div>" +
+            "<div class=\"loc-addr\">" + p.address + "</div>" +
+            "<div class=\"loc-dist\">" + p.distance + "</div></div>" +
             "<div class=\"loc-check\">✓</div>";
           list.appendChild(card);
         });
       })
-      .catch(function(err) {
+      .catch(function() {
         var loader = document.getElementById("nearbyLoading");
         if (loader) loader.textContent = "Could not load nearby places";
       });
