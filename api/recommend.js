@@ -12,6 +12,21 @@ function checkRateLimit(ip) {
   return true;
 }
 
+function verifyFirebaseToken(token) {
+  try {
+    var parts = token.split(".");
+    if (parts.length !== 3) return false;
+    var payload = JSON.parse(Buffer.from(parts[1], "base64").toString("utf8"));
+    var now = Math.floor(Date.now() / 1000);
+    if (payload.exp && payload.exp < now) return false;
+    if (payload.iat && payload.iat > now + 60) return false;
+    if (!payload.sub || !payload.user_id) return false;
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
@@ -26,19 +41,12 @@ module.exports = async function handler(req, res) {
   }
 
   var token = authHeader.split("Bearer ")[1];
-  try {
-    var verifyRes = await fetch("https://oauth2.googleapis.com/tokeninfo?id_token=" + token);
-    var verifyData = await verifyRes.json();
-    if (verifyData.error || !verifyData.sub) {
-      return res.status(401).json({ error: "Invalid session. Please sign in again." });
-    }
-  } catch(e) {
-    return res.status(401).json({ error: "Could not verify your session. Please sign in again." });
+  if (!verifyFirebaseToken(token)) {
+    return res.status(401).json({ error: "Invalid session. Please sign out and sign back in." });
   }
 
   const { craving, hunger, budget, places, image, lat, lng } = req.body;
 
-  // Build the prompt
   var menuContext = image
     ? "The user has uploaded a photo of a menu. Carefully read ALL visible dish names and prices from the image. Only recommend dishes that are clearly visible on this menu."
     : "No menu photo was provided. Give general recommendations based on the craving.";
@@ -93,11 +101,8 @@ module.exports = async function handler(req, res) {
     }
 
     var text = data.choices[0].message.content.trim();
-
-    // Strip markdown code blocks if present
     text = text.replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/\s*```$/i, "").trim();
 
-    // Extract JSON object
     var jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       return res.status(500).json({ error: "Could not read the menu clearly. Try a clearer photo with better lighting." });
