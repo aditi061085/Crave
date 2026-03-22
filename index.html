@@ -22,7 +22,6 @@
       background: var(--bg); color: var(--text);
       min-height: 100vh; overflow-x: hidden;
     }
-
     .auth-screen {
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: flex-end;
@@ -74,7 +73,6 @@
     .auth-error { color: #cc4444; font-size: 13px; text-align: center; margin-top: 10px; min-height: 18px; }
     .auth-terms { text-align: center; color: var(--muted); font-size: 12px; margin-top: 20px; line-height: 1.7; }
     .auth-terms a { color: #666; text-decoration: underline; cursor: pointer; }
-
     .app-screen { min-height: 100vh; display: flex; flex-direction: column; max-width: 430px; margin: 0 auto; }
     .app-header { padding: 60px 24px 16px; display: flex; align-items: center; justify-content: space-between; }
     .header-left { display: flex; align-items: center; gap: 10px; }
@@ -97,20 +95,16 @@
     .avatar-dropdown-item { padding: 11px 14px; font-size: 14px; font-weight: 600; color: #fff; cursor: pointer; border-radius: 8px; transition: background 0.15s; }
     .avatar-dropdown-item:hover { background: #1a1a1a; }
     .avatar-dropdown-item.danger { color: #cc4444; }
-
     .progress-bar { display: flex; gap: 4px; padding: 0 24px 24px; }
     .progress-seg { flex: 1; height: 2px; background: #1a1a1a; border-radius: 1px; transition: background 0.4s; }
     .progress-seg.active { background: #fff; }
     .progress-seg.done { background: #333; }
-
     .app-body { flex: 1; padding: 0 24px 120px; }
     .step-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .step-title { font-size: 28px; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; line-height: 1.15; }
     .step-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; line-height: 1.6; }
-
     .back-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; padding: 0; margin-bottom: 20px; transition: color 0.15s; }
     .back-btn:hover { color: #fff; }
-
     .home-greeting { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
     .home-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; }
     .home-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 18px; padding: 20px; margin-bottom: 12px; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; gap: 16px; }
@@ -119,7 +113,6 @@
     .home-card-title { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
     .home-card-sub { font-size: 13px; color: var(--muted2); }
     .home-card-arrow { color: var(--muted); font-size: 20px; margin-left: auto; }
-
     .camera-zone { width: 100%; aspect-ratio: 3/2; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; cursor: pointer; overflow: hidden; position: relative; transition: border-color 0.2s; }
     .camera-zone:hover { border-color: #333; }
     .camera-zone img { width: 100%; height: 100%; object-fit: cover; }
@@ -131,19 +124,16 @@
     .cam-btn { flex: 1; padding: 13px; background: #111; border: 1px solid #222; border-radius: 12px; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; transition: border-color 0.15s; }
     .cam-btn:hover { border-color: #444; }
     .cam-btn-white { background: #fff !important; color: #000 !important; border-color: #fff !important; }
-
     .field-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
     .field-group { margin-bottom: 24px; }
     .text-input { width: 100%; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 12px; padding: 14px 16px; font-size: 16px; color: #fff; outline: none; font-family: inherit; transition: border-color 0.2s; }
     .text-input:focus { border-color: #444; }
     .text-input::placeholder { color: #333; }
-
     .hunger-big { font-size: 64px; font-weight: 900; letter-spacing: -4px; color: #fff; line-height: 1; margin-bottom: 4px; }
     .hunger-label-text { font-size: 16px; font-weight: 600; color: var(--muted2); margin-bottom: 20px; }
     input[type=range] { -webkit-appearance: none; width: 100%; height: 2px; background: #1e1e1e; border-radius: 1px; cursor: pointer; margin-bottom: 8px; }
     input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #fff; border: none; box-shadow: 0 0 0 4px rgba(255,255,255,0.1); }
     .hunger-scale { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
-
     .chip-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
     .chip { padding: 10px 18px; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--muted2); cursor: pointer; transition: all 0.15s; font-family: inherit; }
     .chip.active { background: #fff; color: #000; border-color: #fff; }
@@ -152,7 +142,6 @@
     .custom-budget:focus-within { border-color: #444; }
     .dollar { font-size: 18px; font-weight: 700; color: var(--muted); }
     .custom-budget input { background: transparent; border: none; outline: none; font-size: 18px; font-weight: 700; color: #fff; width: 100%; font-family: inherit; }
-
     .loc-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.2s; }
     .loc-card:hover { border-color: #333; }
     .loc-card.selected { border-color: #fff; }
@@ -163,7 +152,6 @@
     .loc-dist { font-size: 12px; color: var(--muted2); margin-top: 1px; }
     .loc-check { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 11px; color: transparent; transition: all 0.2s; flex-shrink: 0; }
     .loc-card.selected .loc-check { background: #fff; border-color: #fff; color: #000; }
-
     .group-status { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 16px; padding: 16px; margin-bottom: 12px; }
     .group-status-title { font-size: 13px; font-weight: 700; color: var(--muted2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
     .group-person { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #111; }
@@ -176,31 +164,22 @@
     .share-box { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .share-url { font-size: 13px; color: var(--muted2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .share-copy-btn { background: #fff; color: #000; border: none; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; }
-
-    /* Host confirm banner */
-    .host-banner {
-      background: #0f1a0f; border: 1px solid #1a3a1a;
-      border-radius: 14px; padding: 16px;
-      margin-bottom: 16px; text-align: center;
-    }
+    .host-banner { background: #0f1a0f; border: 1px solid #1a3a1a; border-radius: 14px; padding: 16px; margin-bottom: 16px; text-align: center; }
     .host-banner-title { font-size: 16px; font-weight: 800; color: #22c55e; margin-bottom: 6px; }
     .host-banner-sub { font-size: 13px; color: var(--muted2); }
-
-    .cta-wrap { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 24px 40px; background: linear-gradient(transparent, #000 40%); }
+    .cta-wrap { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 24px 40px; background: linear-gradient(transparent, #000 40%); z-index: 50; }
     .cta-inner { max-width: 382px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
     .btn-cta { width: 100%; background: #fff; color: #000; border: none; border-radius: 14px; padding: 17px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .btn-cta:hover { opacity: 0.88; }
     .btn-cta:disabled { opacity: 0.25; cursor: not-allowed; }
     .btn-cta-outline { width: 100%; background: transparent; color: #fff; border: 1px solid #222; border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: border-color 0.15s; }
     .btn-cta-outline:hover { border-color: #444; }
-
     .loading-screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 40px; background: #000; }
     .loading-logo { font-size: 32px; font-weight: 800; letter-spacing: -1px; color: #fff; }
     .loading-ring { width: 44px; height: 44px; border: 1.5px solid #1e1e1e; border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading-msg { color: var(--muted2); font-size: 15px; text-align: center; line-height: 1.7; }
     .loading-msg strong { color: #fff; }
-
     .top-pick { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 20px; padding: 20px; margin-bottom: 16px; }
     .pick-eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 10px; }
     .pick-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
@@ -221,7 +200,6 @@
     .place-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
     .place-arrow { color: #333; font-size: 20px; margin-left: auto; }
     .error-box { background: #0f0a0a; border: 1px solid #2a1a1a; border-radius: 12px; padding: 14px 16px; font-size: 13px; color: #cc4444; line-height: 1.6; margin-bottom: 16px; }
-
     .legal-screen { min-height: 100vh; background: #000; padding: 60px 24px 80px; max-width: 430px; margin: 0 auto; }
     .legal-back { display: flex; align-items: center; gap: 8px; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: 32px; background: none; border: none; font-family: inherit; }
     .legal-back:hover { color: #fff; }
@@ -230,7 +208,6 @@
     .legal-section { margin-bottom: 28px; }
     .legal-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #fff; }
     .legal-section p { font-size: 14px; color: var(--muted2); line-height: 1.7; }
-
     .toast { position: fixed; top: 56px; left: 50%; transform: translateX(-50%) translateY(-60px); background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; padding: 10px 18px; font-size: 13px; font-weight: 600; color: #fff; z-index: 999; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; }
     .toast.show { transform: translateX(-50%) translateY(0); }
     .fade-in { animation: fadeUp 0.35s ease; }
@@ -462,7 +439,7 @@
       </div>
     </div>
 
-    <!-- GROUP WAITING (non-host after submitting) -->
+    <!-- GROUP WAITING -->
     <div id="stepGroupWaiting" class="fade-in hidden">
       <div class="step-label">Group Order</div>
       <div class="step-title">Craving submitted!</div>
@@ -477,7 +454,7 @@
     <div id="stepGroupConfirm" class="fade-in hidden">
       <div class="step-label">Group Order — Host</div>
       <div class="step-title">Everyone is ready</div>
-      <div class="step-sub">All members have submitted their cravings. Confirm to find the best order for your group.</div>
+      <div class="step-sub">All members have submitted. Confirm to find the best order for your group.</div>
       <div class="host-banner">
         <div class="host-banner-title">✓ All cravings collected</div>
         <div class="host-banner-sub">Tap confirm below to get your group recommendation</div>
@@ -515,7 +492,7 @@
   <div class="legal-title">Terms of Service</div>
   <div class="legal-date">Last updated March 2026</div>
   <div class="legal-section"><h3>1. Acceptance of Terms</h3><p>By using Crave you agree to these terms. If you do not agree please do not use the app.</p></div>
-  <div class="legal-section"><h3>2. What Crave Does</h3><p>Crave uses AI to analyze menu photos and provide personalized food recommendations based on your stated preferences, hunger level, and budget. Recommendations are suggestions only.</p></div>
+  <div class="legal-section"><h3>2. What Crave Does</h3><p>Crave uses AI to analyze menu photos and provide personalized food recommendations. Recommendations are suggestions only.</p></div>
   <div class="legal-section"><h3>3. Your Account</h3><p>You are responsible for keeping your login credentials secure. You must be 13 or older to use Crave.</p></div>
   <div class="legal-section"><h3>4. Your Content</h3><p>Photos you upload are used only to generate your recommendation and are not stored or shared with third parties.</p></div>
   <div class="legal-section"><h3>5. Limitations</h3><p>Crave is provided as-is. We are not liable for any decisions made based on recommendations provided by the app.</p></div>
@@ -527,17 +504,16 @@
   <button class="legal-back" onclick="hideLegal()">← Back</button>
   <div class="legal-title">Privacy Policy</div>
   <div class="legal-date">Last updated March 2026</div>
-  <div class="legal-section"><h3>1. What We Collect</h3><p>We collect your email address or Google account info when you sign in. We also temporarily process menu photos you upload to generate recommendations.</p></div>
+  <div class="legal-section"><h3>1. What We Collect</h3><p>We collect your email address or Google account info when you sign in. We temporarily process menu photos to generate recommendations.</p></div>
   <div class="legal-section"><h3>2. How We Use It</h3><p>Your information is used only to provide the Crave service. We do not sell your data or share it with advertisers.</p></div>
   <div class="legal-section"><h3>3. Location</h3><p>We request your location only to find nearby restaurants. Location data is not stored after your session ends.</p></div>
   <div class="legal-section"><h3>4. Photos</h3><p>Menu photos are sent to OpenAI for analysis and are not stored by Crave after your recommendation is generated.</p></div>
-  <div class="legal-section"><h3>5. Third Party Services</h3><p>We use Firebase for authentication, OpenAI for menu analysis, and Foursquare for nearby restaurant data. Each has their own privacy policy.</p></div>
+  <div class="legal-section"><h3>5. Third Party Services</h3><p>We use Firebase for authentication, OpenAI for menu analysis, and Foursquare for nearby restaurant data.</p></div>
   <div class="legal-section"><h3>6. Contact</h3><p>Questions about privacy? Reach out via the app store listing or your account settings.</p></div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
   import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
@@ -605,6 +581,7 @@
     if (!user) return;
     showLoading("Creating group session...", "Generating your shareable link");
     window._hostConfirmShown = false;
+    window._sessionData = null;
     try {
       var sessionRef = await addDoc(collection(db, "sessions"), {
         createdBy: user.uid,
@@ -656,7 +633,6 @@
       ["members." + user.uid + ".budget"]: window._groupBudget || 20,
       ["members." + user.uid + ".submitted"]: true
     });
-    // Non-host goes to waiting screen
     var isCreator = window._sessionData && window._sessionData.createdBy === user.uid;
     if (!isCreator) {
       hideAllSteps();
@@ -672,14 +648,15 @@
     var user = window._firebaseUser;
     if (!user || !window._sessionData) return;
     var members = Object.values(window._sessionData.members);
-    document.getElementById("ctaBtn").disabled = true;
+    var btn = document.getElementById("ctaBtn");
+    btn.disabled = true;
     document.getElementById("ctaText").textContent = "Finding best match...";
     showLoading("Finding your group order...", "Comparing everyone's cravings");
     var cravings = members.map(function(m) {
       return m.name + " wants " + m.craving + " (hunger " + m.hunger + "/10, budget $" + m.budget + ")";
     });
-    var token = await user.getIdToken();
     try {
+      var token = await user.getIdToken();
       var res = await fetch("/api/group", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
@@ -691,10 +668,13 @@
     } catch(e) {
       hideLoading();
       showToast("Something went wrong. Try again.");
+      btn.disabled = false;
+      document.getElementById("ctaText").textContent = "Confirm — find our order";
     }
   };
 
   function listenToSession(sessionId) {
+    if (window._sessionUnsubscribe) { window._sessionUnsubscribe(); }
     var sessionRef = doc(db, "sessions", sessionId);
     window._sessionUnsubscribe = onSnapshot(sessionRef, function(snap) {
       var data = snap.data();
@@ -705,26 +685,27 @@
       var members = Object.values(data.members);
       var allSubmitted = members.length > 1 && members.every(function(m) { return m.submitted; });
 
-      // Update status lists
       updateGroupMembersList("groupMembers", members);
       updateGroupMembersList("groupMembersWaiting", members);
       updateGroupMembersList("groupMembersConfirm", members);
 
-      // Show host confirm screen when all submitted
       if (allSubmitted && !data.result && !window._hostConfirmShown && isCreator) {
         window._hostConfirmShown = true;
         hideAllSteps();
         document.getElementById("stepGroupConfirm").classList.remove("hidden");
+        document.getElementById("progressBar").classList.add("hidden");
         document.getElementById("ctaWrap").classList.remove("hidden");
-        document.getElementById("ctaBtn").classList.remove("hidden");
-        document.getElementById("ctaBtn").disabled = false;
+        var btn = document.getElementById("ctaBtn");
+        btn.style.display = "flex";
+        btn.style.opacity = "1";
+        btn.removeAttribute("disabled");
+        btn.classList.remove("hidden");
         document.getElementById("ctaText").textContent = "Confirm — find our order";
-        document.getElementById("ctaBtn").onclick = window.confirmGroupOrder;
+        btn.onclick = window.confirmGroupOrder;
         document.getElementById("startOverBtn").classList.remove("hidden");
         updateGroupMembersList("groupMembersConfirm", members);
       }
 
-      // Show results when ready
       if (data.result) {
         hideLoading();
         window._hostConfirmShown = false;
@@ -753,9 +734,11 @@
     window._shareUrl = url;
     document.getElementById("shareUrl").textContent = url;
     document.getElementById("ctaWrap").classList.remove("hidden");
-    document.getElementById("ctaBtn").classList.remove("hidden");
-    document.getElementById("ctaBtn").disabled = false;
-    document.getElementById("ctaBtn").onclick = showGroupInput;
+    var btn = document.getElementById("ctaBtn");
+    btn.style.display = "flex";
+    btn.classList.remove("hidden");
+    btn.disabled = false;
+    btn.onclick = showGroupInput;
     document.getElementById("ctaText").textContent = "Enter my craving";
     document.getElementById("startOverBtn").classList.remove("hidden");
   }
@@ -764,9 +747,11 @@
     hideAllSteps();
     document.getElementById("stepGroupInput").classList.remove("hidden");
     document.getElementById("ctaWrap").classList.remove("hidden");
-    document.getElementById("ctaBtn").classList.remove("hidden");
-    document.getElementById("ctaBtn").disabled = false;
-    document.getElementById("ctaBtn").onclick = window.submitGroupInput;
+    var btn = document.getElementById("ctaBtn");
+    btn.style.display = "flex";
+    btn.classList.remove("hidden");
+    btn.disabled = false;
+    btn.onclick = window.submitGroupInput;
     document.getElementById("ctaText").textContent = "Submit my craving";
     document.getElementById("startOverBtn").classList.remove("hidden");
   }
@@ -776,7 +761,7 @@
     document.getElementById("stepGroupResults").classList.remove("hidden");
     document.getElementById("progressBar").classList.add("hidden");
     document.getElementById("ctaWrap").classList.remove("hidden");
-    document.getElementById("ctaBtn").classList.add("hidden");
+    document.getElementById("ctaBtn").style.display = "none";
     document.getElementById("startOverBtn").classList.remove("hidden");
     var el = document.getElementById("groupResults");
     el.innerHTML = "";
@@ -836,6 +821,8 @@
     document.getElementById("tosScreen").classList.add("hidden");
     document.getElementById("privacyScreen").classList.add("hidden");
   }
+
+  window._showGroupInput = showGroupInput;
 </script>
 
 <script>
@@ -860,8 +847,9 @@
       var el = document.getElementById(id);
       if (el) el.classList.add("hidden");
     });
-    document.getElementById("ctaBtn").classList.remove("hidden");
-    document.getElementById("ctaBtn").onclick = nextStep;
+    var btn = document.getElementById("ctaBtn");
+    btn.style.display = "";
+    btn.onclick = nextStep;
   }
 
   function goHome() {
@@ -870,13 +858,25 @@
     window._sessionData = null;
     hideAllSteps();
     step = 0;
+    hasImage = false;
+    imageBase64 = "";
+    hunger = 5;
+    budget = 20;
     document.getElementById("stepHome").classList.remove("hidden");
     document.getElementById("progressBar").classList.remove("hidden");
     document.getElementById("ctaWrap").classList.add("hidden");
     document.getElementById("startOverBtn").classList.add("hidden");
+    var btn = document.getElementById("ctaBtn");
+    btn.style.display = "";
+    btn.classList.remove("hidden");
     for (var i = 1; i <= 4; i++) {
       var seg = document.getElementById("seg" + i);
       if (seg) seg.className = "progress-seg" + (i === 1 ? " active" : "");
+    }
+    var zone = document.getElementById("cameraZone");
+    if (zone) {
+      zone.innerHTML = "<div class=\"camera-overlay\"><div class=\"cam-icon-wrap\">📷</div><div class=\"cam-label\">Tap to take a photo</div><div class=\"cam-sub\">or upload from gallery</div></div>";
+      zone.onclick = null;
     }
   }
 
@@ -886,10 +886,14 @@
     document.getElementById("step1").classList.remove("hidden");
     document.getElementById("progressBar").classList.remove("hidden");
     document.getElementById("ctaWrap").classList.remove("hidden");
-    document.getElementById("ctaBtn").onclick = nextStep;
+    var btn = document.getElementById("ctaBtn");
+    btn.style.display = "";
+    btn.onclick = nextStep;
     document.getElementById("startOverBtn").classList.add("hidden");
     updateCTA();
   }
+
+  window.startGroup = window.startGroup || function() {};
 
   function goBack() {
     if (step <= 1) { goHome(); return; }
@@ -1040,7 +1044,7 @@
   function setBudget(amount, el) {
     budget = amount;
     document.getElementById("budgetInput").value = amount;
-    var chips = document.querySelectorAll(".chip");
+    var chips = document.querySelectorAll("#step3 .chip");
     for (var i = 0; i < chips.length; i++) chips[i].classList.remove("active");
     el.classList.add("active");
   }
@@ -1058,6 +1062,7 @@
     var startOver = document.getElementById("startOverBtn");
     btn.disabled = false;
     btn.onclick = nextStep;
+    btn.style.display = "";
     btn.classList.remove("hidden");
     if (step === 1) {
       text.textContent = hasImage ? "Looks good, continue" : "Skip — no photo";
@@ -1069,7 +1074,7 @@
       text.textContent = "Find my perfect order";
       startOver.classList.add("hidden");
     } else if (step === 4) {
-      btn.classList.add("hidden");
+      btn.style.display = "none";
       startOver.classList.remove("hidden");
     }
   }
