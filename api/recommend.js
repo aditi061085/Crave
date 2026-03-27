@@ -19,8 +19,7 @@ function verifyFirebaseToken(token) {
     var payload = JSON.parse(Buffer.from(parts[1], "base64").toString("utf8"));
     var now = Math.floor(Date.now() / 1000);
     if (payload.exp && payload.exp < now) return false;
-    if (payload.iat && payload.iat > now + 60) return false;
-    if (!payload.sub || !payload.user_id) return false;
+    if (!payload.sub && !payload.user_id) return false;
     return true;
   } catch(e) {
     return false;
@@ -45,7 +44,11 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: "Invalid session. Please sign out and sign back in." });
   }
 
-  const { craving, hunger, budget, places, image, lat, lng } = req.body;
+  const { craving, hunger, budget, places, image, lat, lng, allergies, hasImage } = req.body;
+
+  var allergyText = allergies && allergies.length > 0
+    ? "The user is allergic to or cannot eat: " + allergies.join(", ") + ". Do NOT recommend any dishes containing these ingredients."
+    : "No allergies or restrictions.";
 
   var menuContext = image
     ? "The user has uploaded a photo of a menu. Carefully read ALL visible dish names and prices from the image. Only recommend dishes that are clearly visible on this menu."
@@ -57,12 +60,14 @@ module.exports = async function handler(req, res) {
     "- Craving: " + craving + "\n" +
     "- Hunger level: " + hunger + " out of 10\n" +
     "- Budget: under $" + budget + "\n" +
-    "- Location context: " + (places && places.length > 0 ? places.join(", ") : "not specified") + "\n\n" +
+    "- Location context: " + (places && places.length > 0 ? places.join(", ") : "not specified") + "\n" +
+    "- Allergies: " + allergyText + "\n\n" +
     "Instructions:\n" +
     "1. If a menu photo is provided, ONLY recommend dishes that appear on it\n" +
     "2. Match dishes to the craving and hunger level\n" +
     "3. Only include dishes under the budget\n" +
-    "4. Be specific — use the actual dish name from the menu\n\n" +
+    "4. Never recommend dishes containing allergens listed above\n" +
+    "5. Be specific — use the actual dish name from the menu\n\n" +
     "You MUST respond with ONLY a valid JSON object. No markdown, no code blocks, no explanation. Just raw JSON.\n\n" +
     "Required format:\n" +
     "{\"top\":{\"name\":\"Dish name\",\"reason\":\"2-3 sentences why this is perfect\",\"tags\":[\"Tag1\",\"Tag2\",\"Tag3\"]},\"others\":[{\"emoji\":\"🍜\",\"name\":\"Dish name\",\"reason\":\"Short reason\",\"price\":\"$14\",\"match\":\"91%\"},{\"emoji\":\"🥗\",\"name\":\"Dish name\",\"reason\":\"Short reason\",\"price\":\"$11\",\"match\":\"85%\"}],\"nearbyPlaces\":[{\"emoji\":\"🍕\",\"name\":\"Place name\",\"meta\":\"0.3 mi · Open · $$\",\"mapsUrl\":\"https://maps.google.com/?q=Place+Name\"}]}";
