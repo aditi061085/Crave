@@ -138,6 +138,7 @@
     .chip { padding: 10px 18px; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--muted2); cursor: pointer; transition: all 0.15s; font-family: inherit; }
     .chip.active { background: #fff; color: #000; border-color: #fff; }
     .chip:hover:not(.active) { border-color: #333; color: #fff; }
+    .chip.allergy-active { background: #cc4444; color: #fff; border-color: #cc4444; }
     .custom-budget { display: flex; align-items: center; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 12px; padding: 14px 16px; gap: 6px; }
     .custom-budget:focus-within { border-color: #444; }
     .dollar { font-size: 18px; font-weight: 700; color: var(--muted); }
@@ -181,18 +182,22 @@
     .loading-msg { color: var(--muted2); font-size: 15px; text-align: center; line-height: 1.7; }
     .loading-msg strong { color: #fff; }
     .top-pick { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 20px; padding: 20px; margin-bottom: 16px; }
+    .top-pick.clickable { cursor: pointer; transition: border-color 0.2s; }
+    .top-pick.clickable:hover { border-color: #444; }
     .pick-eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 10px; }
     .pick-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
     .pick-desc { font-size: 14px; color: var(--muted2); line-height: 1.65; }
     .pick-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
     .pick-tag { padding: 5px 10px; background: #161616; border: 1px solid #222; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--muted2); }
     .section-head { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 28px 0 14px; }
-    .dish-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 16px; padding: 16px; margin-bottom: 8px; display: flex; gap: 14px; }
+    .dish-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 16px; padding: 16px; margin-bottom: 8px; display: flex; gap: 14px; transition: border-color 0.2s; text-decoration: none; color: var(--text); }
+    .dish-card:hover { border-color: #333; }
     .dish-emoji { font-size: 28px; line-height: 1; flex-shrink: 0; padding-top: 2px; }
     .dish-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
     .dish-reason { font-size: 13px; color: var(--muted2); line-height: 1.5; }
     .dish-pills { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
     .dpill { padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; background: #141414; border: 1px solid #222; color: var(--muted2); }
+    .recipe-pill { background: #0a1a0a; border-color: #1a3a1a; color: #22c55e; }
     .place-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 14px; padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: border-color 0.2s; text-decoration: none; }
     .place-card:hover { border-color: #333; }
     .place-icon { width: 38px; height: 38px; background: #111; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
@@ -336,7 +341,7 @@
       <button class="back-btn" onclick="goBack()">← Back</button>
       <div class="step-label">Step 2 of 4</div>
       <div class="step-title">What are you feeling?</div>
-      <div class="step-sub">Tell us your craving and hunger level</div>
+      <div class="step-sub">Tell us your craving, hunger level, and any allergies</div>
       <div class="field-group">
         <label class="field-label">I am craving</label>
         <input type="text" class="text-input" id="cravingInput" placeholder="e.g. something spicy, pasta, a big burger..." />
@@ -347,6 +352,18 @@
         <div class="hunger-label-text" id="hungerLabelText">Moderately hungry</div>
         <input type="range" min="1" max="10" value="5" oninput="updateHunger(this.value)" />
         <div class="hunger-scale"><span>Not hungry</span><span>Starving</span></div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Allergies & restrictions</label>
+        <div class="chip-row">
+          <button class="chip" onclick="toggleAllergy(this,'Nuts')">🥜 Nuts</button>
+          <button class="chip" onclick="toggleAllergy(this,'Dairy')">🥛 Dairy</button>
+          <button class="chip" onclick="toggleAllergy(this,'Gluten')">🌾 Gluten</button>
+          <button class="chip" onclick="toggleAllergy(this,'Shellfish')">🦐 Shellfish</button>
+          <button class="chip" onclick="toggleAllergy(this,'Eggs')">🥚 Eggs</button>
+          <button class="chip" onclick="toggleAllergy(this,'Soy')">🫘 Soy</button>
+        </div>
+        <input type="text" class="text-input" id="customAllergy" placeholder="Other allergies or restrictions..." style="margin-top:10px;" />
       </div>
     </div>
 
@@ -834,12 +851,23 @@
   var userLat = null;
   var userLng = null;
   var legalFrom = "";
+  var allergies = [];
 
   var hungerLabels = {
     1:"Not hungry at all", 2:"Barely hungry", 3:"A little peckish",
     4:"Getting hungry", 5:"Moderately hungry", 6:"Pretty hungry",
     7:"Very hungry", 8:"Starving", 9:"Absolutely starving", 10:"FAMISHED"
   };
+
+  function toggleAllergy(el, name) {
+    if (el.classList.contains("allergy-active")) {
+      el.classList.remove("allergy-active");
+      allergies = allergies.filter(function(a) { return a !== name; });
+    } else {
+      el.classList.add("allergy-active");
+      allergies.push(name);
+    }
+  }
 
   function hideAllSteps() {
     ["stepHome","step1","step2","step3","step4","stepGroup","stepGroupInput",
@@ -856,6 +884,7 @@
     if (window._sessionUnsubscribe) { window._sessionUnsubscribe(); window._sessionUnsubscribe = null; }
     window._hostConfirmShown = false;
     window._sessionData = null;
+    allergies = [];
     hideAllSteps();
     step = 0;
     hasImage = false;
@@ -878,6 +907,10 @@
       zone.innerHTML = "<div class=\"camera-overlay\"><div class=\"cam-icon-wrap\">📷</div><div class=\"cam-label\">Tap to take a photo</div><div class=\"cam-sub\">or upload from gallery</div></div>";
       zone.onclick = null;
     }
+    var allergyBtns = document.querySelectorAll(".chip.allergy-active");
+    allergyBtns.forEach(function(b) { b.classList.remove("allergy-active"); });
+    var customAllergy = document.getElementById("customAllergy");
+    if (customAllergy) customAllergy.value = "";
   }
 
   function startSolo() {
@@ -892,8 +925,6 @@
     document.getElementById("startOverBtn").classList.add("hidden");
     updateCTA();
   }
-
-  window.startGroup = window.startGroup || function() {};
 
   function goBack() {
     if (step <= 1) { goHome(); return; }
@@ -1119,11 +1150,27 @@
     var craving = document.getElementById("cravingInput").value.trim();
     var places = getSelectedPlaces();
     var budgetVal = parseInt(document.getElementById("budgetInput").value) || budget;
+    var customAllergy = document.getElementById("customAllergy").value.trim();
+    var allAllergies = allergies.slice();
+    if (customAllergy) allAllergies.push(customAllergy);
+
     showLoading("Reading your menu...", "Figuring out the perfect dish for you");
-    var body = { craving: craving, hunger: hunger, budget: budgetVal, places: places, lat: userLat, lng: userLng };
+
+    var body = {
+      craving: craving,
+      hunger: hunger,
+      budget: budgetVal,
+      places: places,
+      lat: userLat,
+      lng: userLng,
+      allergies: allAllergies,
+      hasImage: hasImage
+    };
     if (imageBase64) body.image = imageBase64.split(",")[1];
+
     var user = window._firebaseUser;
     if (!user) { hideLoading(); showToast("Please sign in first"); return; }
+
     user.getIdToken().then(function(token) {
       fetch("/api/recommend", {
         method: "POST",
@@ -1150,26 +1197,42 @@
       errBox.textContent = data.error;
       return;
     }
+
+    // Top pick — clickable for recipe if no menu
     if (data.top) {
       var t = data.top;
       var div = document.createElement("div");
-      div.className = "top-pick fade-in";
+      div.className = "top-pick fade-in" + (hasImage ? "" : " clickable");
+      if (!hasImage) {
+        div.onclick = function() {
+          window.open("https://www.google.com/search?q=" + encodeURIComponent(t.name + " recipe ingredients"), "_blank");
+        };
+      }
       var tagsHtml = (t.tags || []).map(function(tag) { return "<span class=\"pick-tag\">" + tag + "</span>"; }).join("");
-      div.innerHTML = "<div class=\"pick-eyebrow\">Top pick</div><div class=\"pick-title\">" + t.name + "</div><div class=\"pick-desc\">" + t.reason + "</div><div class=\"pick-tags\">" + tagsHtml + "</div>";
+      div.innerHTML = "<div class=\"pick-eyebrow\">Top pick" + (hasImage ? "" : " · tap for recipe") + "</div><div class=\"pick-title\">" + t.name + "</div><div class=\"pick-desc\">" + t.reason + "</div><div class=\"pick-tags\">" + tagsHtml + "</div>";
       el.appendChild(div);
     }
+
+    // Other dishes
     if (data.others && data.others.length > 0) {
       var sh = document.createElement("div");
       sh.className = "section-head";
       sh.textContent = "Also worth ordering";
       el.appendChild(sh);
       data.others.forEach(function(d) {
-        var dc = document.createElement("div");
+        var dc = document.createElement(hasImage ? "div" : "a");
         dc.className = "dish-card fade-in";
-        dc.innerHTML = "<div class=\"dish-emoji\">" + (d.emoji || "🍽") + "</div><div><div class=\"dish-name\">" + d.name + "</div><div class=\"dish-reason\">" + d.reason + "</div><div class=\"dish-pills\"><span class=\"dpill\">" + d.price + "</span><span class=\"dpill\">" + d.match + " match</span></div></div>";
+        if (!hasImage) {
+          dc.href = "https://www.google.com/search?q=" + encodeURIComponent(d.name + " recipe ingredients");
+          dc.target = "_blank";
+        }
+        var recipePill = hasImage ? "" : "<span class=\"dpill recipe-pill\">↗ recipe</span>";
+        dc.innerHTML = "<div class=\"dish-emoji\">" + (d.emoji || "🍽") + "</div><div><div class=\"dish-name\">" + d.name + "</div><div class=\"dish-reason\">" + d.reason + "</div><div class=\"dish-pills\"><span class=\"dpill\">" + d.price + "</span><span class=\"dpill\">" + d.match + " match</span>" + recipePill + "</div></div>";
         el.appendChild(dc);
       });
     }
+
+    // Nearby places
     if (data.nearbyPlaces && data.nearbyPlaces.length > 0) {
       var nh = document.createElement("div");
       nh.className = "section-head";
