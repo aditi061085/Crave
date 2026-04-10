@@ -1270,10 +1270,12 @@
     t.classList.add("show");
     setTimeout(function() { t.classList.remove("show"); }, 2600);
   }
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-  }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(function(err) {
+    console.log("SW failed:", err);
+  });
+}
 </script>
 </body>
 </html>
+
