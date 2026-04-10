@@ -14,3 +14,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
           projectId: crave-2a568
+          entryPoint: "."
