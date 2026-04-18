@@ -5,8 +5,8 @@ module.exports = async function handler(req, res) {
   const url = "https://api.foursquare.com/v3/places/search" +
     "?ll=" + lat + "," + lng +
     "&categories=13000" +
-    "&radius=500" +
-    "&limit=8" +
+    "&radius=1000" +
+    "&limit=10" +
     "&sort=DISTANCE";
 
   try {
@@ -20,22 +20,24 @@ module.exports = async function handler(req, res) {
     const emojis = ["🍜","🍕","🌮","🍔","🍣","🥘","🥗","🍱","🍛","🍝"];
 
     const places = (data.results || []).map(function(p, i) {
-      const dist = p.distance
-        ? (Math.round(p.distance * 0.000621371 * 10) / 10) + " mi"
-        : "";
+      const distMeters = p.distance || 99999;
+      const distMiles = Math.round(distMeters * 0.000621371 * 10) / 10;
+      const distDisplay = distMeters < 1000
+        ? distMeters + " m"
+        : distMiles + " mi";
       const address = p.location
         ? (p.location.address || p.location.locality || "")
         : "";
       return {
         name: p.name,
         address: address,
-        distance: dist,
-        distanceNum: p.distance ? Math.round(p.distance * 0.000621371 * 10) / 10 : 999,
+        distance: distDisplay,
+        distanceMeters: distMeters,
         emoji: emojis[i % emojis.length],
         mapsUrl: "https://maps.google.com/?q=" + encodeURIComponent(p.name + " " + address)
       };
     }).filter(function(p) {
-      return p.distanceNum <= 0.5;
+      return p.distanceMeters <= 1000;
     });
 
     res.status(200).json({ places });
