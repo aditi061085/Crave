@@ -28,9 +28,9 @@ module.exports = async function handler(req, res) {
       const address = p.location
         ? (p.location.address || p.location.locality || "")
         : "";
-      const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" +
-        encodeURIComponent(p.name + " " + address) +
-        "&query_place_id=" + (p.fsq_id || "");
+      const placeLat = p.geocodes && p.geocodes.main ? p.geocodes.main.latitude : lat;
+      const placeLng = p.geocodes && p.geocodes.main ? p.geocodes.main.longitude : lng;
+      const mapsUrl = "https://www.google.com/maps?q=" + placeLat + "," + placeLng;
       return {
         name: p.name,
         address: address,
