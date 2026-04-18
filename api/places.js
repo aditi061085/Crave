@@ -28,13 +28,16 @@ module.exports = async function handler(req, res) {
       const address = p.location
         ? (p.location.address || p.location.locality || "")
         : "";
+      const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(p.name + " " + address) +
+        "&query_place_id=" + (p.fsq_id || "");
       return {
         name: p.name,
         address: address,
         distance: distDisplay,
         distanceMeters: distMeters,
         emoji: emojis[i % emojis.length],
-        mapsUrl: "https://maps.google.com/?q=" + encodeURIComponent(p.name + " " + address)
+        mapsUrl: mapsUrl
       };
     }).filter(function(p) {
       return p.distanceMeters <= 1000;
