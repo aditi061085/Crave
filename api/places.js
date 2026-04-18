@@ -30,7 +30,9 @@ module.exports = async function handler(req, res) {
         : "";
       const placeLat = p.geocodes && p.geocodes.main ? p.geocodes.main.latitude : lat;
       const placeLng = p.geocodes && p.geocodes.main ? p.geocodes.main.longitude : lng;
-      const mapsUrl = "https://www.google.com/maps?q=" + placeLat + "," + placeLng;
+      const mapsUrl = "https://www.google.com/maps/search/" +
+        encodeURIComponent(p.name) +
+        "/@" + placeLat + "," + placeLng + ",15z";
       return {
         name: p.name,
         address: address,
@@ -41,6 +43,8 @@ module.exports = async function handler(req, res) {
       };
     }).filter(function(p) {
       return p.distanceMeters <= 1000;
+    }).sort(function(a, b) {
+      return a.distanceMeters - b.distanceMeters;
     });
 
     res.status(200).json({ places });
