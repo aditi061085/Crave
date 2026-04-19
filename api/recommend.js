@@ -31,7 +31,7 @@ async function getRealNearbyPlaces(lat, lng) {
   try {
     const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
       "?location=" + lat + "," + lng +
-      "&radius=1000" +
+      "&radius=3000" +
       "&type=restaurant" +
       "&rankby=prominence" +
       "&key=" + process.env.GOOGLE_PLACES_API_KEY;
