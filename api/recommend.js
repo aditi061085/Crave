@@ -26,6 +26,36 @@ function verifyFirebaseToken(token) {
   }
 }
 
+async function getRealNearbyPlaces(lat, lng) {
+  if (!lat || !lng) return [];
+  try {
+    const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
+      "?location=" + lat + "," + lng +
+      "&radius=1000" +
+      "&type=restaurant" +
+      "&rankby=prominence" +
+      "&key=" + process.env.GOOGLE_PLACES_API_KEY;
+    const r = await fetch(url);
+    const data = await r.json();
+    const emojis = ["🍜","🍕","🌮","🍔","🍣","🥘","🥗","🍱","🍛","🍝"];
+    return (data.results || []).slice(0, 3).map(function(p, i) {
+      const placeLat = p.geometry.location.lat;
+      const placeLng = p.geometry.location.lng;
+      const mapsUrl = "https://www.google.com/maps/place/?q=place_id:" + p.place_id;
+      const priceLevel = p.price_level ? "$".repeat(p.price_level) : "$$";
+      const isOpen = p.opening_hours && p.opening_hours.open_now ? "Open" : "Check hours";
+      return {
+        emoji: emojis[i % emojis.length],
+        name: p.name,
+        meta: (p.vicinity || "") + " · " + isOpen + " · " + priceLevel,
+        mapsUrl: mapsUrl
+      };
+    });
+  } catch(e) {
+    return [];
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
@@ -70,7 +100,7 @@ module.exports = async function handler(req, res) {
     "5. Be specific — use the actual dish name from the menu\n\n" +
     "You MUST respond with ONLY a valid JSON object. No markdown, no code blocks, no explanation. Just raw JSON.\n\n" +
     "Required format:\n" +
-    "{\"top\":{\"name\":\"Dish name\",\"reason\":\"2-3 sentences why this is perfect\",\"tags\":[\"Tag1\",\"Tag2\",\"Tag3\"]},\"others\":[{\"emoji\":\"🍜\",\"name\":\"Dish name\",\"reason\":\"Short reason\",\"price\":\"$14\",\"match\":\"91%\"},{\"emoji\":\"🥗\",\"name\":\"Dish name\",\"reason\":\"Short reason\",\"price\":\"$11\",\"match\":\"85%\"}],\"nearbyPlaces\":[{\"emoji\":\"🍕\",\"name\":\"Place name\",\"meta\":\"0.3 mi · Open · $$\",\"mapsUrl\":\"https://maps.google.com/?q=Place+Name\"}]}";
+    "{\"top\":{\"name\":\"Dish name\",\"reason\":\"2-3 sentences why this is perfect\",\"tags\":[\"Tag1\",\"Tag2\",\"Tag3\"]},\"others\":[{\"emoji\":\"🍜\",\"name\":\"Dish name\",\"reason\":\"Short reason\",\"price\":\"$14\",\"match\":\"91%\"},{\"emoji\":\"🥗\",\"name\":\"Dish name\",\"reason\":\"Short reason\",\"price\":\"$11\",\"match\":\"85%\"}]}";
 
   var messages = [
     {
@@ -85,19 +115,22 @@ module.exports = async function handler(req, res) {
   ];
 
   try {
-    var response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer " + process.env.OPENAI_API_KEY,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "gpt-4o",
-        messages: messages,
-        max_tokens: 1000,
-        temperature: 0.3
-      })
-    });
+    var [response, nearbyPlaces] = await Promise.all([
+      fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + process.env.OPENAI_API_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: messages,
+          max_tokens: 1000,
+          temperature: 0.3
+        })
+      }),
+      getRealNearbyPlaces(lat, lng)
+    ]);
 
     var data = await response.json();
 
@@ -119,6 +152,8 @@ module.exports = async function handler(req, res) {
     } catch(parseErr) {
       return res.status(500).json({ error: "Could not read the menu clearly. Try a clearer photo with better lighting." });
     }
+
+    parsed.nearbyPlaces = nearbyPlaces;
 
     res.status(200).json(parsed);
   } catch(e) {
