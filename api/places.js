@@ -2,49 +2,35 @@ module.exports = async function handler(req, res) {
   const { lat, lng } = req.query;
   if (!lat || !lng) return res.status(400).json({ places: [] });
 
-  const url = "https://api.foursquare.com/v3/places/search" +
-    "?ll=" + lat + "," + lng +
-    "&categories=13000" +
+  const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
+    "?location=" + lat + "," + lng +
     "&radius=1000" +
-    "&limit=10" +
-    "&sort=DISTANCE";
+    "&type=restaurant" +
+    "&rankby=prominence" +
+    "&key=" + process.env.GOOGLE_PLACES_API_KEY;
 
   try {
-    const r = await fetch(url, {
-      headers: {
-        "Authorization": process.env.FOURSQUARE_API_KEY,
-        "Accept": "application/json"
-      }
-    });
+    const r = await fetch(url);
     const data = await r.json();
     const emojis = ["🍜","🍕","🌮","🍔","🍣","🥘","🥗","🍱","🍛","🍝"];
 
-    const places = (data.results || []).map(function(p, i) {
-      const distMeters = p.distance || 99999;
-      const distMiles = Math.round(distMeters * 0.000621371 * 10) / 10;
+    const places = (data.results || []).slice(0, 5).map(function(p, i) {
+      const placeLat = p.geometry.location.lat;
+      const placeLng = p.geometry.location.lng;
+      const mapsUrl = "https://www.google.com/maps/place/?q=place_id:" + p.place_id;
+      const distMeters = getDistance(lat, lng, placeLat, placeLng);
       const distDisplay = distMeters < 1000
-        ? distMeters + " m"
-        : distMiles + " mi";
-      const address = p.location
-        ? (p.location.address || p.location.locality || "")
-        : "";
-      const placeLat = p.geocodes && p.geocodes.main ? p.geocodes.main.latitude : lat;
-      const placeLng = p.geocodes && p.geocodes.main ? p.geocodes.main.longitude : lng;
-      const mapsUrl = "https://www.google.com/maps/search/" +
-        encodeURIComponent(p.name) +
-        "/@" + placeLat + "," + placeLng + ",15z";
+        ? Math.round(distMeters) + " m"
+        : (Math.round(distMeters * 0.000621371 * 10) / 10) + " mi";
       return {
         name: p.name,
-        address: address,
+        address: p.vicinity || "",
         distance: distDisplay,
-        distanceMeters: distMeters,
         emoji: emojis[i % emojis.length],
         mapsUrl: mapsUrl
       };
-    }).filter(function(p) {
-      return p.distanceMeters <= 1000;
     }).sort(function(a, b) {
-      return a.distanceMeters - b.distanceMeters;
+      return parseFloat(a.distance) - parseFloat(b.distance);
     });
 
     res.status(200).json({ places });
@@ -52,3 +38,13 @@ module.exports = async function handler(req, res) {
     res.status(500).json({ places: [], error: e.message });
   }
 };
+
+function getDistance(lat1, lng1, lat2, lng2) {
+  const R = 6371000;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLng/2) * Math.sin(dLng/2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
