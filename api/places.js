@@ -4,7 +4,7 @@ module.exports = async function handler(req, res) {
 
   const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
     "?location=" + lat + "," + lng +
-    "&radius=1000" +
+    "&radius=48000" +
     "&type=restaurant" +
     "&rankby=prominence" +
     "&key=" + process.env.GOOGLE_PLACES_API_KEY;
@@ -26,11 +26,14 @@ module.exports = async function handler(req, res) {
         name: p.name,
         address: p.vicinity || "",
         distance: distDisplay,
+        distanceMeters: distMeters,
         emoji: emojis[i % emojis.length],
         mapsUrl: mapsUrl
       };
+    }).filter(function(p) {
+      return p.distanceMeters <= 48000;
     }).sort(function(a, b) {
-      return parseFloat(a.distance) - parseFloat(b.distance);
+      return a.distanceMeters - b.distanceMeters;
     });
 
     res.status(200).json({ places });
