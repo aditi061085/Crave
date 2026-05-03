@@ -1,12 +1,13 @@
 module.exports = async function handler(req, res) {
-  const { lat, lng } = req.query;
+  const { lat, lng, craving } = req.query;
   if (!lat || !lng) return res.status(400).json({ places: [] });
 
-  const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
-    "?location=" + lat + "," + lng +
+  const query = craving ? craving + " restaurant" : "restaurant";
+  const url = "https://maps.googleapis.com/maps/api/place/textsearch/json" +
+    "?query=" + encodeURIComponent(query) +
+    "&location=" + lat + "," + lng +
     "&radius=48000" +
     "&type=restaurant" +
-    "&rankby=prominence" +
     "&key=" + process.env.GOOGLE_PLACES_API_KEY;
 
   try {
@@ -24,7 +25,7 @@ module.exports = async function handler(req, res) {
         : (Math.round(distMeters * 0.000621371 * 10) / 10) + " mi";
       return {
         name: p.name,
-        address: p.vicinity || "",
+        address: p.vicinity || p.formatted_address || "",
         distance: distDisplay,
         distanceMeters: distMeters,
         emoji: emojis[i % emojis.length],
