@@ -1006,7 +1006,7 @@
     if (!userLat || !userLng) return;
     var loader = document.getElementById("nearbyLoading");
     if (loader) loader.textContent = "Loading nearby restaurants...";
-    fetch("/api/places?lat=" + userLat + "&lng=" + userLng)
+    fetch("/api/places?lat=" + userLat + "&lng=" + userLng + "&craving=" + encodeURIComponent(document.getElementById("cravingInput").value || ""))
       .then(function(r) { return r.json(); })
       .then(function(data) {
         var list = document.getElementById("nearbyList");
