@@ -533,7 +533,7 @@
   <div class="legal-section"><h3>2. How We Use It</h3><p>Your information is used only to provide the Crave service. We do not sell your data or share it with advertisers.</p></div>
   <div class="legal-section"><h3>3. Location</h3><p>We request your location only to find nearby restaurants. Location data is not stored after your session ends.</p></div>
   <div class="legal-section"><h3>4. Photos</h3><p>Menu photos are sent to OpenAI for analysis and are not stored by Crave after your recommendation is generated.</p></div>
-  <div class="legal-section"><h3>5. Third Party Services</h3><p>We use Firebase for authentication, OpenAI for menu analysis, and Foursquare for nearby restaurant data.</p></div>
+  <div class="legal-section"><h3>5. Third Party Services</h3><p>We use Firebase for authentication, OpenAI for menu analysis, and Google Places for nearby restaurant data.</p></div>
   <div class="legal-section"><h3>6. Contact</h3><p>Questions about privacy? Reach out via the app store listing or your account settings.</p></div>
 </div>
 
@@ -919,6 +919,11 @@
     allergyBtns.forEach(function(b) { b.classList.remove("allergy-active"); });
     var customAllergy = document.getElementById("customAllergy");
     if (customAllergy) customAllergy.value = "";
+    // Reset nearby list
+    var nearbyList = document.getElementById("nearbyList");
+    if (nearbyList) {
+      nearbyList.innerHTML = '<div class="loc-card selected" onclick="toggleLoc(this)"><div class="loc-icon">📋</div><div class="loc-info"><div class="loc-name">This menu</div><div class="loc-addr">The restaurant you are in now</div><div class="loc-dist">Here now</div></div><div class="loc-check">✓</div></div><div id="nearbyLoading" style="color:#555;font-size:13px;padding:12px 0;">Finding places near you...</div>';
+    }
   }
 
   function startSolo() {
@@ -992,7 +997,6 @@
       function(pos) {
         userLat = pos.coords.latitude;
         userLng = pos.coords.longitude;
-        loadNearbyPlaces();
       },
       function() {
         var loader = document.getElementById("nearbyLoading");
@@ -1002,11 +1006,11 @@
     );
   }
 
-  function loadNearbyPlaces() {
+  function loadNearbyPlaces(craving) {
     if (!userLat || !userLng) return;
     var loader = document.getElementById("nearbyLoading");
     if (loader) loader.textContent = "Loading nearby restaurants...";
-    fetch("/api/places?lat=" + userLat + "&lng=" + userLng + "&craving=" + encodeURIComponent(document.getElementById("cravingInput").value || ""))
+    fetch("/api/places?lat=" + userLat + "&lng=" + userLng + "&craving=" + encodeURIComponent(craving || ""))
       .then(function(r) { return r.json(); })
       .then(function(data) {
         var list = document.getElementById("nearbyList");
@@ -1131,6 +1135,10 @@
   function goTo(n) {
     hideAllSteps();
     step = n;
+    if (n === 3) {
+      var craving = document.getElementById("cravingInput").value || "";
+      loadNearbyPlaces(craving);
+    }
     document.getElementById("step" + n).classList.remove("hidden");
     document.getElementById("progressBar").classList.remove("hidden");
     for (var i = 1; i <= 4; i++) {
@@ -1270,11 +1278,12 @@
     t.classList.add("show");
     setTimeout(function() { t.classList.remove("show"); }, 2600);
   }
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').catch(function(err) {
-    console.log("SW failed:", err);
-  });
-}
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(function(err) {
+      console.log("SW failed:", err);
+    });
+  }
 </script>
 </body>
 </html>
