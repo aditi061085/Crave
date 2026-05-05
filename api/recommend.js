@@ -26,28 +26,28 @@ function verifyFirebaseToken(token) {
   }
 }
 
-async function getRealNearbyPlaces(lat, lng) {
+async function getRealNearbyPlaces(lat, lng, craving) {
   if (!lat || !lng) return [];
   try {
-    const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
-      "?location=" + lat + "," + lng +
+    const query = craving ? craving + " restaurant" : "restaurant";
+    const url = "https://maps.googleapis.com/maps/api/place/textsearch/json" +
+      "?query=" + encodeURIComponent(query) +
+      "&location=" + lat + "," + lng +
       "&radius=48000" +
       "&type=restaurant" +
-      "&rankby=prominence" +
       "&key=" + process.env.GOOGLE_PLACES_API_KEY;
     const r = await fetch(url);
     const data = await r.json();
     const emojis = ["🍜","🍕","🌮","🍔","🍣","🥘","🥗","🍱","🍛","🍝"];
     return (data.results || []).slice(0, 3).map(function(p, i) {
-      const placeLat = p.geometry.location.lat;
-      const placeLng = p.geometry.location.lng;
       const mapsUrl = "https://www.google.com/maps/place/?q=place_id:" + p.place_id;
       const priceLevel = p.price_level ? "$".repeat(p.price_level) : "$$";
       const isOpen = p.opening_hours && p.opening_hours.open_now ? "Open" : "Check hours";
       return {
         emoji: emojis[i % emojis.length],
         name: p.name,
-        meta: (p.vicinity || "") + " · " + isOpen + " · " + priceLevel,
+        place_id: p.place_id,
+        meta: (p.formatted_address || p.vicinity || "") + " · " + isOpen + " · " + priceLevel,
         mapsUrl: mapsUrl
       };
     });
@@ -129,7 +129,7 @@ module.exports = async function handler(req, res) {
           temperature: 0.3
         })
       }),
-      getRealNearbyPlaces(lat, lng)
+      getRealNearbyPlaces(lat, lng, craving)
     ]);
 
     var data = await response.json();
