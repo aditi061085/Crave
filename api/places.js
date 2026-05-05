@@ -29,6 +29,7 @@ module.exports = async function handler(req, res) {
         distance: distDisplay,
         distanceMeters: distMeters,
         emoji: emojis[i % emojis.length],
+        place_id: p.place_id,
         mapsUrl: mapsUrl
       };
     }).filter(function(p) {
