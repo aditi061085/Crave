@@ -1325,10 +1325,16 @@
       goTo(3);
     }
     else if (step === 3) {
-      if (window.analyze) {
+      if (typeof window.analyze === "function") {
         window.analyze();
       } else {
-        showToast("App still loading, please wait a moment");
+        setTimeout(function() {
+          if (typeof window.analyze === "function") {
+            window.analyze();
+          } else {
+            showToast("App still loading, please wait and try again");
+          }
+        }, 800);
       }
     }
   }
