@@ -112,7 +112,7 @@
     .back-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; padding: 0; margin-bottom: 20px; transition: color 0.15s; }
     .back-btn:hover { color: #fff; }
     .home-greeting { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
-    .home-sub { font-size: 14px; color: var(--muted2); margin-bottom: 32px; }
+    .home-sub { font-size: 14px; color: var(--muted2); margin-bottom: 16px; }
     .home-card { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 18px; padding: 20px; margin-bottom: 12px; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; gap: 16px; }
     .home-card:hover { border-color: #333; }
     .home-card-icon { width: 48px; height: 48px; border-radius: 14px; background: #111; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
@@ -209,8 +209,8 @@
     .place-icon { width: 38px; height: 38px; background: #111; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .place-name { font-size: 14px; font-weight: 700; color: #fff; }
     .place-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .place-arrow { color: #333; font-size: 20px; margin-left: auto; }
-    .place-dots { background: none; border: none; color: var(--muted2); font-size: 18px; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: background 0.15s; flex-shrink: 0; }
+    .place-arrow { color: #333; font-size: 20px; margin-left: auto; text-decoration: none; }
+    .place-dots { background: none; border: none; color: var(--muted2); font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: background 0.15s; flex-shrink: 0; }
     .place-dots:hover { background: #1a1a1a; color: #fff; }
     .error-box { background: #0f0a0a; border: 1px solid #2a1a1a; border-radius: 12px; padding: 14px 16px; font-size: 13px; color: #cc4444; line-height: 1.6; margin-bottom: 16px; }
     .legal-screen { min-height: 100vh; background: #000; padding: 60px 24px 80px; max-width: 430px; margin: 0 auto; }
@@ -226,28 +226,26 @@
     .fade-in { animation: fadeUp 0.35s ease; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .hidden { display: none !important; }
-    /* SCAN COUNTER */
     .scan-counter { background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
     .scan-counter-text { font-size: 13px; color: var(--muted2); }
     .scan-counter-num { font-size: 13px; font-weight: 700; color: #fff; }
-    /* PRO PAYWALL */
-    .paywall-screen { position: fixed; inset: 0; background: #000; z-index: 500; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; }
+    .paywall-screen { position: fixed; inset: 0; background: #000; z-index: 500; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; overflow-y: auto; }
     .paywall-icon { font-size: 48px; margin-bottom: 16px; }
     .paywall-title { font-size: 28px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; text-align: center; }
     .paywall-sub { font-size: 15px; color: var(--muted2); text-align: center; line-height: 1.6; margin-bottom: 32px; }
     .paywall-features { width: 100%; max-width: 340px; margin-bottom: 32px; }
     .paywall-feature { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #111; }
     .paywall-feature:last-child { border-bottom: none; }
-    .paywall-feature-icon { font-size: 20px; }
+    .paywall-feature-icon { font-size: 20px; flex-shrink: 0; }
     .paywall-feature-text { font-size: 14px; font-weight: 600; }
     .paywall-feature-sub { font-size: 12px; color: var(--muted2); margin-top: 2px; }
     .btn-pro { width: 100%; max-width: 340px; background: #fff; color: #000; border: none; border-radius: 14px; padding: 17px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; margin-bottom: 12px; }
     .btn-pro-skip { background: none; border: none; color: var(--muted2); font-size: 14px; cursor: pointer; font-family: inherit; }
-    /* RESTAURANT INFO PAGE */
     .restaurant-screen { position: fixed; inset: 0; background: #000; z-index: 400; overflow-y: auto; }
     .restaurant-header { padding: 60px 24px 16px; display: flex; align-items: center; gap: 12px; }
     .restaurant-back { background: none; border: none; color: var(--muted2); font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 6px; }
-    .restaurant-photos { display: flex; gap: 8px; padding: 0 24px; overflow-x: auto; margin-bottom: 24px; }
+    .restaurant-photos { display: flex; gap: 8px; padding: 0 24px; overflow-x: auto; margin-bottom: 24px; scrollbar-width: none; }
+    .restaurant-photos::-webkit-scrollbar { display: none; }
     .restaurant-photos img { width: 200px; height: 140px; object-fit: cover; border-radius: 12px; flex-shrink: 0; }
     .restaurant-body { padding: 0 24px 100px; }
     .restaurant-name { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
@@ -701,8 +699,7 @@
     await signOut(auth);
   };
 
-  // SCAN LIMIT FUNCTIONS
-  window.checkScanLimit = async function() {
+  async function checkScanLimit() {
     var user = window._firebaseUser;
     if (!user) return false;
     if (window._isPro) return true;
@@ -720,9 +717,9 @@
     await setDoc(ref, { scanCount: scanCount + 1 }, { merge: true });
     updateScanCounter(3 - scanCount - 1);
     return true;
-  };
+  }
 
-  window.loadScanCount = async function() {
+  async function loadScanCount() {
     var user = window._firebaseUser;
     if (!user) return;
     if (window._isPro) {
@@ -736,7 +733,7 @@
     var scanDate = data.scanDate || "";
     var scanCount = scanDate === today ? (data.scanCount || 0) : 0;
     updateScanCounter(3 - scanCount);
-  };
+  }
 
   function updateScanCounter(remaining) {
     var el = document.getElementById("scanCounterNum");
@@ -745,11 +742,60 @@
 
   window.upgradePro = function() {
     showToast("Payment coming soon! Contact us to upgrade.");
-    // TODO: integrate Stripe here
   };
 
   window.closePaywall = function() {
     document.getElementById("paywallScreen").classList.add("hidden");
+  };
+
+  window.analyze = async function() {
+    var allowed = await checkScanLimit();
+    if (!allowed) {
+      document.getElementById("paywallScreen").classList.remove("hidden");
+      return;
+    }
+
+    var craving = document.getElementById("cravingInput").value.trim();
+    var places = getSelectedPlaces();
+    var budgetVal = parseInt(document.getElementById("budgetInput").value) || window._budget || 20;
+    var customAllergy = document.getElementById("customAllergy").value.trim();
+    var allAllergies = (window._allergies || []).slice();
+    if (customAllergy) allAllergies.push(customAllergy);
+
+    showLoading("Reading your menu...", "Figuring out the perfect dish for you");
+
+    var body = {
+      craving: craving,
+      hunger: window._hunger || 5,
+      budget: budgetVal,
+      places: places,
+      lat: window._userLat,
+      lng: window._userLng,
+      allergies: allAllergies,
+      hasImage: window._hasImage || false
+    };
+    if (window._imageBase64) body.image = window._imageBase64.split(",")[1];
+
+    var user = window._firebaseUser;
+    if (!user) { hideLoading(); showToast("Please sign in first"); return; }
+
+    try {
+      var token = await user.getIdToken();
+      var r = await fetch("/api/recommend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+        body: JSON.stringify(body)
+      });
+      var data = await r.json();
+      hideLoading();
+      goTo(4);
+      renderResults(data);
+    } catch(e) {
+      hideLoading();
+      goTo(4);
+      document.getElementById("errorBox").classList.remove("hidden");
+      document.getElementById("errorBox").textContent = "Something went wrong. Check your API keys in Vercel.";
+    }
   };
 
   window.startGroup = async function() {
@@ -969,7 +1015,7 @@
 
   function enterApp(user) {
     window._firebaseUser = user;
-    window._isPro = false; // TODO: check Firestore for pro status
+    window._isPro = false;
     document.getElementById("authScreen").classList.add("hidden");
     document.getElementById("appScreen").classList.remove("hidden");
     var avatar = document.getElementById("avatarEl");
@@ -981,7 +1027,7 @@
     document.getElementById("avatarDropdownName").textContent = user.displayName || user.email || "Account";
     var firstName = (user.displayName || "").split(" ")[0] || "there";
     document.getElementById("homeGreeting").textContent = "Hey " + firstName + ", what are you eating?";
-    window.loadScanCount();
+    loadScanCount();
     var params = new URLSearchParams(window.location.search);
     var sessionId = params.get("session");
     if (sessionId) {
@@ -1004,15 +1050,16 @@
 </script>
 
 <script>
+  // Global state
+  window._hasImage = false;
+  window._imageBase64 = "";
+  window._hunger = 5;
+  window._budget = 20;
+  window._userLat = null;
+  window._userLng = null;
+  window._allergies = [];
   var step = 0;
-  var hasImage = false;
-  var imageBase64 = "";
-  var hunger = 5;
-  var budget = 20;
-  var userLat = null;
-  var userLng = null;
   var legalFrom = "";
-  var allergies = [];
 
   var hungerLabels = {
     1:"Not hungry at all", 2:"Barely hungry", 3:"A little peckish",
@@ -1023,10 +1070,10 @@
   function toggleAllergy(el, name) {
     if (el.classList.contains("allergy-active")) {
       el.classList.remove("allergy-active");
-      allergies = allergies.filter(function(a) { return a !== name; });
+      window._allergies = window._allergies.filter(function(a) { return a !== name; });
     } else {
       el.classList.add("allergy-active");
-      allergies.push(name);
+      window._allergies.push(name);
     }
   }
 
@@ -1045,13 +1092,13 @@
     if (window._sessionUnsubscribe) { window._sessionUnsubscribe(); window._sessionUnsubscribe = null; }
     window._hostConfirmShown = false;
     window._sessionData = null;
-    allergies = [];
+    window._allergies = [];
     hideAllSteps();
     step = 0;
-    hasImage = false;
-    imageBase64 = "";
-    hunger = 5;
-    budget = 20;
+    window._hasImage = false;
+    window._imageBase64 = "";
+    window._hunger = 5;
+    window._budget = 20;
     document.getElementById("stepHome").classList.remove("hidden");
     document.getElementById("progressBar").classList.remove("hidden");
     document.getElementById("ctaWrap").classList.add("hidden");
@@ -1076,7 +1123,6 @@
     if (nearbyList) {
       nearbyList.innerHTML = '<div class="loc-card selected" onclick="toggleLoc(this)"><div class="loc-icon">📋</div><div class="loc-info"><div class="loc-name">This menu</div><div class="loc-addr">The restaurant you are in now</div><div class="loc-dist">Here now</div></div><div class="loc-check">✓</div></div><div id="nearbyLoading" style="color:#555;font-size:13px;padding:12px 0;">Finding places near you...</div>';
     }
-    if (window.loadScanCount) window.loadScanCount();
   }
 
   function startSolo() {
@@ -1141,15 +1187,11 @@
   }
 
   function getLocation() {
-    if (!navigator.geolocation) {
-      var loader = document.getElementById("nearbyLoading");
-      if (loader) loader.textContent = "Location not supported on this device";
-      return;
-    }
+    if (!navigator.geolocation) return;
     navigator.geolocation.getCurrentPosition(
       function(pos) {
-        userLat = pos.coords.latitude;
-        userLng = pos.coords.longitude;
+        window._userLat = pos.coords.latitude;
+        window._userLng = pos.coords.longitude;
       },
       function() {
         var loader = document.getElementById("nearbyLoading");
@@ -1160,10 +1202,10 @@
   }
 
   function loadNearbyPlaces(craving) {
-    if (!userLat || !userLng) return;
+    if (!window._userLat || !window._userLng) return;
     var loader = document.getElementById("nearbyLoading");
     if (loader) loader.textContent = "Loading nearby restaurants...";
-    fetch("/api/places?lat=" + userLat + "&lng=" + userLng + "&craving=" + encodeURIComponent(craving || ""))
+    fetch("/api/places?lat=" + window._userLat + "&lng=" + window._userLng + "&craving=" + encodeURIComponent(craving || ""))
       .then(function(r) { return r.json(); })
       .then(function(data) {
         var list = document.getElementById("nearbyList");
@@ -1214,11 +1256,11 @@
     if (!file) return;
     var reader = new FileReader();
     reader.onload = function(ev) {
-      imageBase64 = ev.target.result;
+      window._imageBase64 = ev.target.result;
       var zone = document.getElementById("cameraZone");
-      zone.innerHTML = "<img src=\"" + imageBase64 + "\" /><div class=\"camera-overlay\"><div class=\"cam-icon-wrap\">✅</div><div class=\"cam-label\">Menu captured</div><div class=\"cam-sub\">Tap to retake</div></div>";
+      zone.innerHTML = "<img src=\"" + window._imageBase64 + "\" /><div class=\"camera-overlay\"><div class=\"cam-icon-wrap\">✅</div><div class=\"cam-label\">Menu captured</div><div class=\"cam-sub\">Tap to retake</div></div>";
       zone.onclick = triggerCamera;
-      hasImage = true;
+      window._hasImage = true;
       updateCTA();
       showToast("Menu photo saved");
     };
@@ -1226,9 +1268,9 @@
   }
 
   function updateHunger(v) {
-    hunger = parseInt(v);
+    window._hunger = parseInt(v);
     document.getElementById("hungerNum").textContent = v;
-    document.getElementById("hungerLabelText").textContent = hungerLabels[hunger];
+    document.getElementById("hungerLabelText").textContent = hungerLabels[window._hunger];
   }
 
   function updateGroupHunger(v) {
@@ -1238,7 +1280,7 @@
   }
 
   function setBudget(amount, el) {
-    budget = amount;
+    window._budget = amount;
     document.getElementById("budgetInput").value = amount;
     var chips = document.querySelectorAll("#step3 .chip");
     for (var i = 0; i < chips.length; i++) chips[i].classList.remove("active");
@@ -1261,7 +1303,7 @@
     btn.style.display = "";
     btn.classList.remove("hidden");
     if (step === 1) {
-      text.textContent = hasImage ? "Looks good, continue" : "Skip — no photo";
+      text.textContent = window._hasImage ? "Looks good, continue" : "Skip — no photo";
       startOver.classList.add("hidden");
     } else if (step === 2) {
       text.textContent = "Next";
@@ -1282,7 +1324,13 @@
       if (!c) { showToast("Tell us what you are craving first"); return; }
       goTo(3);
     }
-    else if (step === 3) { analyze(); }
+    else if (step === 3) {
+      if (window.analyze) {
+        window.analyze();
+      } else {
+        showToast("App still loading, please wait a moment");
+      }
+    }
   }
 
   function goTo(n) {
@@ -1315,53 +1363,6 @@
     return names;
   }
 
-  async function analyze() {
-    var allowed = await window.checkScanLimit();
-    if (!allowed) {
-      document.getElementById("paywallScreen").classList.remove("hidden");
-      return;
-    }
-
-    var craving = document.getElementById("cravingInput").value.trim();
-    var places = getSelectedPlaces();
-    var budgetVal = parseInt(document.getElementById("budgetInput").value) || budget;
-    var customAllergy = document.getElementById("customAllergy").value.trim();
-    var allAllergies = allergies.slice();
-    if (customAllergy) allAllergies.push(customAllergy);
-
-    showLoading("Reading your menu...", "Figuring out the perfect dish for you");
-
-    var body = {
-      craving: craving,
-      hunger: hunger,
-      budget: budgetVal,
-      places: places,
-      lat: userLat,
-      lng: userLng,
-      allergies: allAllergies,
-      hasImage: hasImage
-    };
-    if (imageBase64) body.image = imageBase64.split(",")[1];
-
-    var user = window._firebaseUser;
-    if (!user) { hideLoading(); showToast("Please sign in first"); return; }
-
-    user.getIdToken().then(function(token) {
-      fetch("/api/recommend", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
-        body: JSON.stringify(body)
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(data) { hideLoading(); goTo(4); renderResults(data); })
-      .catch(function() {
-        hideLoading(); goTo(4);
-        document.getElementById("errorBox").classList.remove("hidden");
-        document.getElementById("errorBox").textContent = "Something went wrong. Check your API keys in Vercel.";
-      });
-    });
-  }
-
   function renderResults(data) {
     var el = document.getElementById("results");
     el.innerHTML = "";
@@ -1375,14 +1376,14 @@
     if (data.top) {
       var t = data.top;
       var div = document.createElement("div");
-      div.className = "top-pick fade-in" + (hasImage ? "" : " clickable");
-      if (!hasImage) {
+      div.className = "top-pick fade-in" + (window._hasImage ? "" : " clickable");
+      if (!window._hasImage) {
         div.onclick = function() {
           window.open("https://www.google.com/search?q=" + encodeURIComponent(t.name + " recipe ingredients"), "_blank");
         };
       }
       var tagsHtml = (t.tags || []).map(function(tag) { return "<span class=\"pick-tag\">" + tag + "</span>"; }).join("");
-      div.innerHTML = "<div class=\"pick-eyebrow\">Top pick" + (hasImage ? "" : " · tap for recipe") + "</div><div class=\"pick-title\">" + t.name + "</div><div class=\"pick-desc\">" + t.reason + "</div><div class=\"pick-tags\">" + tagsHtml + "</div>";
+      div.innerHTML = "<div class=\"pick-eyebrow\">Top pick" + (window._hasImage ? "" : " · tap for recipe") + "</div><div class=\"pick-title\">" + t.name + "</div><div class=\"pick-desc\">" + t.reason + "</div><div class=\"pick-tags\">" + tagsHtml + "</div>";
       el.appendChild(div);
     }
     if (data.others && data.others.length > 0) {
@@ -1391,13 +1392,13 @@
       sh.textContent = "Also worth ordering";
       el.appendChild(sh);
       data.others.forEach(function(d) {
-        var dc = document.createElement(hasImage ? "div" : "a");
+        var dc = document.createElement(window._hasImage ? "div" : "a");
         dc.className = "dish-card fade-in";
-        if (!hasImage) {
+        if (!window._hasImage) {
           dc.href = "https://www.google.com/search?q=" + encodeURIComponent(d.name + " recipe ingredients");
           dc.target = "_blank";
         }
-        var recipePill = hasImage ? "" : "<span class=\"dpill recipe-pill\">↗ recipe</span>";
+        var recipePill = window._hasImage ? "" : "<span class=\"dpill recipe-pill\">↗ recipe</span>";
         dc.innerHTML = "<div class=\"dish-emoji\">" + (d.emoji || "🍽") + "</div><div><div class=\"dish-name\">" + d.name + "</div><div class=\"dish-reason\">" + d.reason + "</div><div class=\"dish-pills\"><span class=\"dpill\">" + d.price + "</span><span class=\"dpill\">" + d.match + " match</span>" + recipePill + "</div></div>";
         el.appendChild(dc);
       });
@@ -1410,11 +1411,13 @@
       data.nearbyPlaces.forEach(function(p) {
         var card = document.createElement("div");
         card.className = "place-card fade-in";
+        var placeId = p.place_id || "";
+        var encodedName = encodeURIComponent(p.name || "");
         card.innerHTML =
           "<div class=\"place-icon\">" + (p.emoji || "📍") + "</div>" +
           "<div style='flex:1'><div class=\"place-name\">" + p.name + "</div><div class=\"place-meta\">" + p.meta + "</div></div>" +
-          "<button class=\"place-dots\" onclick=\"openRestaurant('" + (p.place_id || "") + "','" + encodeURIComponent(p.name || "") + "')\" title=\"More info\">⋯</button>" +
-          "<a href=\"" + (p.mapsUrl || "#") + "\" target=\"_blank\" class=\"place-arrow\" onclick=\"event.stopPropagation()\">›</a>";
+          "<button class=\"place-dots\" onclick=\"openRestaurant('" + placeId + "','" + encodedName + "')\" title=\"More info\">⋯</button>" +
+          "<a href=\"" + (p.mapsUrl || "#") + "\" target=\"_blank\" class=\"place-arrow\" style=\"text-decoration:none\" onclick=\"event.stopPropagation()\">›</a>";
         el.appendChild(card);
       });
     }
@@ -1453,29 +1456,19 @@
       ? '<span style="color:#cc4444;font-weight:700;">Closed</span> · '
       : '';
 
+    var mapsUrl = data.mapsUrl || "#";
+
     document.getElementById("restaurantContent").innerHTML =
       photosHtml +
       '<div class="restaurant-body">' +
         '<div class="restaurant-name">' + (data.name || "") + '</div>' +
         '<div class="restaurant-meta">' + isOpenBadge + (data.priceLevel || "") + ' · ' + (data.address || "") + '</div>' +
-
-        '<div class="restaurant-section">' +
-          '<div class="restaurant-section-title">About</div>' +
-          '<div class="restaurant-summary">' + (data.summary || "No summary available") + '</div>' +
-        '</div>' +
-
+        '<div class="restaurant-section"><div class="restaurant-section-title">About</div><div class="restaurant-summary">' + (data.summary || "No summary available") + '</div></div>' +
         (data.bestFor ? '<div class="restaurant-section"><div class="restaurant-section-title">Best for</div><div class="restaurant-summary">' + data.bestFor + '</div></div>' : '') +
-
         (dishesHtml ? '<div class="restaurant-section"><div class="restaurant-section-title">Popular dishes</div>' + dishesHtml + '</div>' : '') +
-
         (data.tip ? '<div class="restaurant-section"><div class="restaurant-section-title">Insider tip</div><div class="restaurant-tip"><strong>💡 </strong>' + data.tip + '</div></div>' : '') +
-
-        '<div class="restaurant-section">' +
-          '<div class="restaurant-section-title">Hours</div>' +
-          '<div class="restaurant-hours">' + hoursHtml + '</div>' +
-        '</div>' +
-
-        '<button class="btn-maps" onclick="window.open(\'' + (data.mapsUrl || "#") + '\', \'_blank\')">Open in Google Maps →</button>' +
+        '<div class="restaurant-section"><div class="restaurant-section-title">Hours</div><div class="restaurant-hours">' + hoursHtml + '</div></div>' +
+        '<button class="btn-maps" onclick="window.open(\'' + mapsUrl + '\', \'_blank\')">Open in Google Maps →</button>' +
       '</div>';
   }
 
