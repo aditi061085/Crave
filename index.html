@@ -677,13 +677,19 @@
   });
 
   window.signInGoogle = async function() {
-    try {
-      document.getElementById("authError").textContent = "";
-      await signInWithPopup(auth, provider);
-    } catch(e) {
+  try {
+    document.getElementById("authError").textContent = "";
+    document.querySelector(".btn-primary").disabled = true;
+    document.querySelector(".btn-primary").style.opacity = "0.5";
+    await signInWithPopup(auth, provider);
+  } catch(e) {
+    document.querySelector(".btn-primary").disabled = false;
+    document.querySelector(".btn-primary").style.opacity = "1";
+    if (e.code !== "auth/popup-closed-by-user" && e.code !== "auth/cancelled-popup-request") {
       document.getElementById("authError").textContent = e.message.replace("Firebase: ", "").replace(/ \(auth.*\)\.?/, "");
     }
-  };
+  }
+};
 
   window.signInEmail = async function() {
     var email = document.getElementById("emailInput").value.trim();
