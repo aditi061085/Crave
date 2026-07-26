@@ -1111,6 +1111,14 @@
 </script>
 
 <script>
+  if (navigator.userAgent.indexOf('Instagram') > -1) {
+  document.addEventListener('DOMContentLoaded', function() {
+    var banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#fff;color:#000;padding:12px 20px;text-align:center;z-index:9999;font-size:14px;font-weight:600;';
+    banner.innerHTML = 'For the best experience, open in Safari or Chrome. <a href="https://crave4food.com" target="_blank" style="color:#000;text-decoration:underline;">Tap here to open</a>';
+    document.body.appendChild(banner);
+  });
+}
   // Global state
   window._hasImage = false;
   window._imageBase64 = "";
